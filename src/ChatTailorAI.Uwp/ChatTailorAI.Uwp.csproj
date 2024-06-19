@@ -267,10 +267,11 @@
     <Content Include="Assets\Wide310x150Logo.scale-150.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <None Include="appsecrets.example.json" />
-    <None Include="appsecrets.json">
+    <None Include="appsecrets.json" Condition="Exists('appsecrets.json')">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <PRIResource Include="appsettings-admin.example.resw" />
+    <PRIResource Include="appsettings-admin.resw" Condition="Exists('appsettings-admin.resw')" />
     <None Include="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
