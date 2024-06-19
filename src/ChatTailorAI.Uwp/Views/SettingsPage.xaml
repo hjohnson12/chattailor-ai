@@ -1817,7 +1817,7 @@
                                         <HyperlinkButton Content="Rate Us" NavigateUri="ms-windows-store://review/?ProductId=9PJRF3ZZ3KHK" />
                                         <HyperlinkButton Content="Send Feedback" NavigateUri="mailto:chattailorai@mgail.com" />
                                         <HyperlinkButton Content="Report Bug" NavigateUri="mailto:chattailorai@mgail.com" />
-                                        <!--<HyperlinkButton Content="Support Developer" NavigateUri="https://paypal.me/chattailorai" />-->
+                                        <HyperlinkButton Content="Source Code" NavigateUri="https://github.com/hjohnson12/chattailor-ai" />
                                     </StackPanel>
                                 </Grid>
                                 <Grid Grid.Column="2">
@@ -1825,7 +1825,7 @@
                                         Margin="12"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center">
-                                        v2.2.2
+                                        v2.3.0
                                     </TextBlock>
                                 </Grid>
                             </Grid>
@@ -1852,6 +1852,22 @@
                                             </Grid.RowDefinitions>
                                             <Grid Grid.Row="0" HorizontalAlignment="Center">
                                                 <StackPanel Orientation="Vertical">
+                                                    <TextBlock
+                                                        Margin="0,12,0,0"
+                                                        FontWeight="Bold"
+                                                        IsTextSelectionEnabled="True"
+                                                        Text="v2.3.0:"
+                                                        TextDecorations="Underline"
+                                                        TextWrapping="Wrap" />
+                                                    <TextBlock
+                                                        Margin="0,0,0,12"
+                                                        Text="• General changes, fixes"
+                                                        TextWrapping="Wrap" />
+                                                    <TextBlock
+                                                        Margin="0,0,0,12"
+                                                        Text="• Source code for the project has been open sourced, check at the bottom of this page for the link"
+                                                        TextWrapping="Wrap" />
+
                                                     <TextBlock
                                                         Margin="0,12,0,0"
                                                         FontWeight="Bold"
