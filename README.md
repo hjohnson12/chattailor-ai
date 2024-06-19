@@ -61,6 +61,29 @@ Utilizes a layered architecture to separate concerns and enhance maintainability
 
 - **ChatTailorAI.Uwp**: Represents the presentation layer specifically for UWP. This includes user interface components and the logic needed to handle user interactions within the UWP framework.
 
+## Contributing
+
+### Reporting Bugs
+
+Found a bug? Open an issue on GitHub with a clear description of the problem and how to reproduce it.
+
+### Suggesting Features
+
+Have an idea for a new feature? Open an issue on GitHub with a detailed description of your suggestion and why it would be useful.
+
+### Submitting Pull Requests
+
+Want to contribute code? Awesome! Here’s how to get started:
+1. **Fork the repository**.
+2. **Clone your fork**: `git clone https://github.com/your-username/chattailor-ai.git`
+3. **Create a branch**: `git checkout -b feature-or-bugfix-name`
+4. **Make your changes**.
+5. **Commit your changes**: `git commit -m "Description of the feature or fix"`
+6. **Push to your branch**: `git push origin feature-or-bugfix-name`
+7. **Create a pull request**.
+
+If possible, please try to stick with the project's architecture and code style when making changes. 
+
 ## Ethical Use Guidelines
 
 We are committed to promoting ethical use of AI technologies. Here are our guidelines to ensure responsible usage:
