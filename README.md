@@ -2,7 +2,7 @@
 
 A C# desktop application using the Universal Windows Platform (UWP), used to interact with LLM's such as GPT, Claude, or Gemini for chat interactions and DALL-E for AI image generation. Available on the [Microsoft Store](https://apps.microsoft.com/detail/9pjrf3zz3khk?hl=en-US&gl=US) and requires an API key for the specific LLM provider
 
-[![.NET CI Build](https://github.com/hjohnson12/chattailor-ai/actions/workflows/main.yml/badge.svg?branch=feature%2Fv2)](https://github.com/hjohnson12/chattailor-ai/actions/workflows/main.yml)
+[![.NET CI Build](https://github.com/hjohnson12/chattailor-ai/actions/workflows/main.yml/badge.svg)](https://github.com/hjohnson12/chattailor-ai/actions/workflows/main.yml)
 
 ## Features
 
