@@ -1,0 +1,90 @@
+﻿<ContentDialog
+    x:Class="ChatTailorAI.Uwp.Views.Dialogs.NewImageDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:ChatTailorAI.Uwp.Converters"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ChatTailorAI.Uwp.Views.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Title="Generate Image"
+    SecondaryButtonText="Close"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+    <ContentDialog.Resources>
+        <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </ContentDialog.Resources>
+
+    <ScrollViewer>
+        <Grid Margin="0,4,0,4">
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid
+                Grid.Row="0"
+                Width="400"
+                Margin="0,0,0,4">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock
+                        Margin="0,0,0,4"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Center"
+                        FontSize="12"
+                        Foreground="LightGray"
+                        Text="Choose settings below for image generation"
+                        TextWrapping="Wrap" />
+                    <!--<TextBlock
+                Margin="0,4,0,4"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                FontSize="12"
+                Foreground="LightGray"
+                Text="If no settings are set here, it comes from whats set in the Settings page"
+                TextWrapping="Wrap" />-->
+                    <!--<TextBlock FontWeight="Bold" Text="Prompt:" />-->
+                    <!--<TextBlock
+                FontSize="12"
+                Foreground="LightGray"
+                Text="Uses model and options set in Settings" />-->
+                    <!--<ComboBox Header="Model:" ItemsSource="{x:Bind ViewModel.Models, Mode=OneWay}" />-->
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,8,0,0">
+                <StackPanel Orientation="Vertical">
+                    <ComboBox
+                        Margin="0,0,0,8"
+                        Header="Model:"
+                        ItemsSource="{x:Bind ViewModel.Models, Mode=OneWay}"
+                        SelectedItem="{x:Bind ViewModel.SelectedModel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Prompt:" />
+                    <TextBox
+                        x:Name="PromptTextBox"
+                        Width="400"
+                        Height="300"
+                        Margin="0,10,0,0"
+                        VerticalAlignment="Top"
+                        AcceptsReturn="True"
+                        PlaceholderText="Enter image prompt here, e.g., a cat riding a motorcycle"
+                        Text="{x:Bind ViewModel.Prompt, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="Wrap" />
+                    <Button
+                        Margin="0,12,0,0"
+                        Command="{x:Bind ViewModel.GenerateImageCommand}"
+                        Content="Generate" />
+                </StackPanel>
+            </Grid>
+            <Grid
+                Grid.Row="2"
+                Margin="0,28,0,0"
+                VerticalAlignment="Center"
+                Visibility="{x:Bind ViewModel.IsGenerating, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}">
+                <StackPanel Orientation="Horizontal">
+                    <muxc:ProgressRing IsActive="{x:Bind ViewModel.IsGenerating, Mode=OneWay}" />
+                    <TextBlock Margin="12,8,0,0" Text="Generating image, please wait..." />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</ContentDialog>

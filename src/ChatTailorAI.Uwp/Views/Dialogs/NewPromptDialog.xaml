@@ -1,0 +1,47 @@
+﻿<ContentDialog
+    x:Class="ChatTailorAI.Uwp.Views.Dialogs.NewPromptDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ChatTailorAI.Uwp.Views.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Create Prompt"
+    PrimaryButtonCommand="{x:Bind ViewModel.CreatePromptCommand, Mode=OneWay}"
+    PrimaryButtonText="Create"
+    SecondaryButtonText="Close"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontWeight="Bold" Text="Title:" />
+                    <TextBox
+                        x:Name="TxtBoxPromptTitle"
+                        Margin="0,4,0,0"
+                        PlaceholderText="Enter prompt title"
+                        Text="{x:Bind ViewModel.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Margin="0,12,0,0">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontWeight="Bold" Text="Content:" />
+                    <TextBox
+                        x:Name="TxtBoxPromptContent"
+                        Width="400"
+                        Height="250"
+                        Margin="0,4,0,0"
+                        AcceptsReturn="True"
+                        PlaceholderText="Enter prompt content"
+                        Text="{x:Bind ViewModel.Content, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</ContentDialog>

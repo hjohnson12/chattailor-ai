@@ -1,0 +1,66 @@
+name: .NET CI Build
+
+on:
+  push:
+    branches: [ '**' ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+      
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '3.1.426'
+
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    - name: Restore NuGet packages for Non-UWP Projects
+      run: dotnet restore ./src/ChatTailorAI.sln
+
+    - name: Restore NuGet packages for UWP Projects
+      run: |
+        msbuild /t:restore ./src/ChatTailorAI.Services.Uwp/ChatTailorAI.Services.Uwp.csproj
+        msbuild /t:restore ./src/ChatTailorAI.Uwp/ChatTailorAI.Uwp.csproj
+
+    - name: Build .NET Standard projects
+      run: |
+        dotnet build --configuration Release ./src/ChatTailorAI.DataAccess/ChatTailorAI.DataAccess.csproj --no-restore
+        dotnet build --configuration Release ./src/ChatTailorAI.Services/ChatTailorAI.Services.csproj --no-restore
+        dotnet build --configuration Release ./src/ChatTailorAI.Shared/ChatTailorAI.Shared.csproj --no-restore
+
+    - name: Build UWP Class Library
+      run: msbuild /p:Configuration=Release /p:Platform=x86 ./src/ChatTailorAI.Services.Uwp/ChatTailorAI.Services.Uwp.csproj
+
+    - name: Build UWP project (Debug)
+      if: github.ref != 'refs/heads/master' && github.ref != 'refs/heads/develop'
+      run: msbuild /p:Configuration=Debug /p:Platform=x86 /p:AppxPackageSigningEnabled=false ./src/ChatTailorAI.Uwp/ChatTailorAI.Uwp.csproj
+              
+    - name: Build UWP project (Release)
+      if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/develop'
+      env:
+        PFX_CERTIFICATE: ${{ secrets.PFX_CERTIFICATE }}
+        PFX_PASSWORD: ${{ secrets.PFX_PASSWORD }}
+      run: |
+        # TODO: Change key used if eventually uploading an artifact for the store from actions
+        echo "$PFX_CERTIFICATE" | base64 --decode > ./ChatTailorAI_Key.pfx
+        msbuild /p:Configuration=Release /p:Platform=x86 /p:UapAppxPackageBuildMode=StoreUpload /p:PackageCertificateKeyFile=./ChatTailorAICertificate.pfx /p:PackageCertificatePassword=$PFX_PASSWORD ./src/ChatTailorAI.Uwp/ChatTailorAI.Uwp.csproj
+
+  build-migrations:
+    runs-on: windows-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Setup .NET 6.x SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.x'
+
+    - name: Build Migrations project
+      run: dotnet build --configuration Release ./src/ChatTailorAI.Migrations/ChatTailorAI.Migrations.csproj

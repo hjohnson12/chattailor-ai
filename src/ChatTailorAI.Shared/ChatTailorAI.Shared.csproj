@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Chat\Anthropic\Events\Details\**" />
+    <Compile Remove="Services\Assistants\Custom\**" />
+    <Compile Remove="Services\Tools\Schemas\**" />
+    <EmbeddedResource Remove="Models\Chat\Anthropic\Events\Details\**" />
+    <EmbeddedResource Remove="Services\Assistants\Custom\**" />
+    <EmbeddedResource Remove="Services\Tools\Schemas\**" />
+    <None Remove="Models\Chat\Anthropic\Events\Details\**" />
+    <None Remove="Services\Assistants\Custom\**" />
+    <None Remove="Services\Tools\Schemas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+    <PackageReference Include="Microsoft.CognitiveServices.Speech" Version="1.34.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

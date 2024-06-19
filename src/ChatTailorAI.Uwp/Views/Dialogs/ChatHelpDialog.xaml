@@ -1,0 +1,72 @@
+﻿<ContentDialog
+    x:Class="ChatTailorAI.Uwp.Views.Dialogs.ChatHelpDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ChatTailorAI.Uwp.Views.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Chats Help"
+    SecondaryButtonText="Close"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+
+    <Grid MaxWidth="400" Margin="0,12,0,0">
+        <ScrollViewer>
+            <StackPanel Margin="0,0,8,0" Orientation="Vertical">
+                <TextBlock
+                    Margin="0,0,0,12"
+                    FontWeight="Bold"
+                    Text="Creating Chats:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    IsTextSelectionEnabled="True"
+                    Text="• Standard Chat - A chat using the default manual context management and any of the selected models"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    IsTextSelectionEnabled="True"
+                    Text="• Assistant Chat - A chat using a particular assistant you've created. Uses the model and instructions from the assistant, but can optionally override them for the new chat by selecting a model / instructions in the dialog. The context is managed automatically depending on the type of assistant"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Instructions are optional, if none are set or not available for the specified model it uses the models default instructions"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,12,0,12"
+                    FontWeight="Bold"
+                    Text="Deleting Chats:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Deleting a chat that is associated with an OpenAI Assistant removes the chat thread from OpenAI as well as the local database"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Upon deletion, any chats associated with an assisant will become readonly"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,12,0,12"
+                    FontWeight="Bold"
+                    Text="Editing Chats:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Can update the name, model, and instructions for the chat (overrides assistants model/instructions if an assistant chat)"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,12,0,12"
+                    FontWeight="Bold"
+                    Text="General:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    Text="• If an assistant associated with a conversation is deleted, the conversation will become read-only"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</ContentDialog>

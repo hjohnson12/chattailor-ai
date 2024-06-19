@@ -1,0 +1,85 @@
+﻿<ContentDialog
+    x:Class="ChatTailorAI.Uwp.Views.Dialogs.AssistantHelpDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:ChatTailorAI.Uwp.Views.Dialogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Assistants Help"
+    Margin="12,12,12,12"
+    SecondaryButtonText="Close"
+    Style="{StaticResource DefaultContentDialogStyle}"
+    mc:Ignorable="d">
+
+    <Grid MaxWidth="400" Margin="0,12,0,0">
+        <ScrollViewer>
+            <StackPanel Orientation="Vertical">
+                <TextBlock
+                    Margin="0,0,0,24"
+                    Text="Assistants contain a long running context window that doesn't require manual management of messages when the context is full"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,0,0,24"
+                    Text="• Streaming messages is not currently available for assistants"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="0,0,0,12"
+                    FontWeight="Bold"
+                    Text="Creating Assistants:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Can be created based on OpenAI's Assistants API, other options coming later"
+                    TextWrapping="Wrap" />
+                <TextBlock Margin="0,4,0,4" TextWrapping="Wrap">
+                    <Run Text="• OpenAI Assistants viewable on their website at" />
+                    <Hyperlink Click="Hyperlink_Click">
+                        <Run Text="https://platform.openai.com/assistants" />
+                    </Hyperlink>
+                </TextBlock>
+
+                <TextBlock
+                    Margin="4"
+                    Text="• Requires a name, model, and instructions at a minimum"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    Text="• At this time Code Interpreter is the only supported tool until a future update (can use OpenAI's playground site to add your own retrieval files or functions temporarily)"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,12,0,12"
+                    FontWeight="Bold"
+                    Text="Deleting Assistants:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Deleting an OpenAI Assistant removes it directly from OpenAI as well as the local database"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Requires an assistant to be selected"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Upon deletion, any chats associated with the assisant will become readonly"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,12,0,12"
+                    FontWeight="Bold"
+                    Text="Editing Assistants:"
+                    TextDecorations="Underline" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Editing an OpenAI Assistant updates it directly in OpenAI as well as the local database"
+                    TextWrapping="Wrap" />
+                <TextBlock
+                    Margin="4"
+                    Text="• Can update the name, model, instructions the assistant uses post creation"
+                    TextWrapping="Wrap" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</ContentDialog>

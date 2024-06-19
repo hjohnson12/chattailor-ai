@@ -1,0 +1,1 @@
+﻿Console.WriteLine("Hello, This project exits because EntityFramework needs a way to create migrations for various databases at design time.");

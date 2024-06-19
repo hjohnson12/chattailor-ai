@@ -1,0 +1,64 @@
+﻿[
+  {
+    "name": "get_my_playlist_names",
+    "description": "Get a list of my playlist names",
+    "parameters": {
+      "type": "object",
+      "properties": {}
+    }
+  },
+  {
+    "name": "get_playlist_songs",
+    "description": "Get songs from a playlist by name",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "playlistName": {
+          "type": "string",
+          "description": "The name of the playlist, e.g., Liked Songs"
+        }
+      },
+      "required": [ "playlistName" ]
+    }
+  },
+  {
+    "name": "add_song_to_playlist",
+    "description": "Add a song to a playlist given the song name, artist, and playlist name",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "trackName": {
+          "type": "string",
+          "description": "The name of a track/song, e.g. Ojitos Lindos"
+        },
+        "artistName": {
+          "type": "string",
+          "description": "The artist of a song, e.g. Bad Bunny"
+        },
+        "playlistName": {
+          "type": "string",
+          "description": "The name of a playlist, e.g. Rock songs"
+        }
+      },
+      "required": [ "trackName", "artistName", "playlistName" ]
+    }
+  },
+  {
+    "name": "search_and_play_song",
+    "description": "Search for a song by name and artist and then play the song",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "trackName": {
+          "type": "string",
+          "description": "The name of a track/song, e.g. Ojitos Lindos"
+        },
+        "artistName": {
+          "type": "string",
+          "description": "The artist of a song, e.g. Bad Bunny"
+        }
+      },
+      "required": [ "trackName", "artistName" ]
+    }
+  }
+]
