@@ -120,7 +120,10 @@
                                                     AutomationProperties.Name="Simple PasswordBox"
                                                     IsPasswordRevealButtonEnabled="False">
                                                     <i1:Interaction.Behaviors>
-                                                        <behaviors:PasswordBoxBehavior Password="{Binding Password, Mode=TwoWay}" />
+                                                        <behaviors:PasswordBoxBehavior Password="{Binding OpenAIApiKey, Mode=TwoWay}" />
+                                                        <core:EventTriggerBehavior EventName="LostFocus">
+                                                            <core:InvokeCommandAction Command="{x:Bind ViewModel.TextLostFocusCommand}" />
+                                                        </core:EventTriggerBehavior>
                                                     </i1:Interaction.Behaviors>
                                                 </PasswordBox>
                                                 <CheckBox

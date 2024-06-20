@@ -54,7 +54,7 @@ namespace ChatTailorAI.Uwp.Views
 
         private void apiKeyBox_PasswordChanged(object sender, RoutedEventArgs e)
         {
-            ViewModel.Password = (sender as PasswordBox).Password;
+            ViewModel.OpenAIApiKey = (sender as PasswordBox).Password;
         }
 
         private async void Page_Loaded(object sender, RoutedEventArgs e)
