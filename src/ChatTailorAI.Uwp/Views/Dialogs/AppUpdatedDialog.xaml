@@ -20,7 +20,7 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock
                         Margin="0,0,0,12"
-                        Text="v2.3.0 ChatTailor AI:"
+                        Text="v2.3.1 ChatTailor AI:"
                         TextDecorations="Underline"
                         TextWrapping="Wrap" />
                     <TextBlock

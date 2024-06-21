@@ -17,6 +17,7 @@ using ChatTailorAI.Shared.Services.DataServices;
 using ChatTailorAI.Shared.Services.Chat.LMStudio;
 using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Models.Shared;
+using ChatTailorAI.Shared.Events;
 
 namespace ChatTailorAI.Shared.ViewModels.Pages
 {
@@ -410,9 +411,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             set => SetProperty(ref _prompts, value);
         }
 
-        private string _password;
-
-        public string Password
+        public string OpenAIApiKey
         {
             get
             {
@@ -420,8 +419,8 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             }
             set
             {
-                // TODO: Try to avoid updating per character changed
                 _userSettingsService.Set(UserSettings.OpenAiApiKey, value);
+                _eventAggregator.PublishApiKeyChange(new ApiKeyChangedEventArgs { ApiKey = value, KeyType = ApiKeyType.OpenAI });
             }
         }
 
@@ -434,7 +433,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             set
             {
                 _userSettingsService.Set(UserSettings.AzureSpeechServicesKey, value);
-                _eventAggregator.PublishApiKeyChange(new ApiKeyChangedEventArgs { ApiKey = value, KeyType = Events.ApiKeyType.AzureSpeech });
+                _eventAggregator.PublishApiKeyChange(new ApiKeyChangedEventArgs { ApiKey = value, KeyType = ApiKeyType.AzureSpeech });
             }
         }
 
@@ -713,7 +712,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             // Certain services lsiten for API key changes, since currently it only initializes 
             // the API key for a specific service on instantiation
             // Eventually may just grab it each time before the request intead of an event
-            _eventAggregator.PublishApiKeyChange(new ApiKeyChangedEventArgs { ApiKey = Password, KeyType = Events.ApiKeyType.OpenAI });
+            _eventAggregator.PublishApiKeyChange(new ApiKeyChangedEventArgs { ApiKey = OpenAIApiKey, KeyType = Events.ApiKeyType.OpenAI });
 
             _navigationService.NavigateBack();
         }
