@@ -1828,7 +1828,7 @@
                                         Margin="12"
                                         HorizontalAlignment="Right"
                                         VerticalAlignment="Center">
-                                        v2.3.1
+                                        v2.4.0
                                     </TextBlock>
                                 </Grid>
                             </Grid>
@@ -1855,6 +1855,26 @@
                                             </Grid.RowDefinitions>
                                             <Grid Grid.Row="0" HorizontalAlignment="Center">
                                                 <StackPanel Orientation="Vertical">
+                                                    <TextBlock
+                                                        Margin="0,12,0,0"
+                                                        FontWeight="Bold"
+                                                        IsTextSelectionEnabled="True"
+                                                        Text="v2.4.0:"
+                                                        TextDecorations="Underline"
+                                                        TextWrapping="Wrap" />
+                                                    <TextBlock
+                                                        Margin="0,0,0,12"
+                                                        Text="• Added latest OpenAI gpt-4o models, o1 preview reasoning models"
+                                                        TextWrapping="Wrap" />
+                                                    <TextBlock
+                                                        Margin="0,0,0,12"
+                                                        Text="• Added latest Anthropic Claude 3.5 Sonnet model"
+                                                        TextWrapping="Wrap" />
+                                                    <TextBlock
+                                                        Margin="0,0,0,12"
+                                                        Text="• General changes, fixes"
+                                                        TextWrapping="Wrap" />
+
                                                     <TextBlock
                                                         Margin="0,12,0,0"
                                                         FontWeight="Bold"
