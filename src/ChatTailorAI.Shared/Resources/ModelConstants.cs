@@ -25,6 +25,13 @@ namespace ChatTailorAI.Shared.Resources
             "gpt-4-turbo-2024-04-09",
             "gpt-4o",
             "gpt-4o-2024-05-13",
+            "gpt-4o-mini",
+            "gpt-4o-2024-08-06",
+            "chatgpt-4o-latest",
+            "o1-preview",
+            "o1-preview-2024-09-12",
+            "o1-mini",
+            "o1-mini-2024-09-12",
             "claude-3-opus-20240229",
             "claude-3-sonnet-20240229",
             "claude-3-haiku-20240307",
@@ -57,6 +64,8 @@ namespace ChatTailorAI.Shared.Resources
             "gpt-4-turbo-preview",
             "gpt-4o",
             "gpt-4o-2024-05-13",
+            "gpt-4o-mini",
+            "gpt-4o-2024-08-06",
         };
 
         public static readonly string[] VisionModels = new string[]
@@ -68,13 +77,33 @@ namespace ChatTailorAI.Shared.Resources
             "gpt-4-turbo",
             "gpt-4-turbo-2024-04-09",
             "gpt-4o",
-            "gpt-4o-2024-05-13"
+            "gpt-4o-2024-05-13",
+            "gpt-4o-mini",
+            "gpt-4o-2024-08-06",
         };
 
         public static readonly string[] ImageModels = new string[]
         {
             "dall-e-3",
             "dall-e-2"
+        };
+
+        public static readonly string[] ModelsWithoutFunctionSupport = new string[]
+        {
+            "gpt-4-vision-preview",
+            "chatgpt-4o-latest",
+            "o1-preview",
+            "o1-preview-2024-09-12",
+            "o1-mini",
+            "o1-mini-2024-09-12",
+        };
+
+        public static readonly string[] ModelsWithoutStreamingSupport = new string[]
+        {
+            "o1-preview",
+            "o1-preview-2024-09-12",
+            "o1-mini",
+            "o1-mini-2024-09-12"
         };
     }
 }
