@@ -20,16 +20,8 @@
                 <StackPanel Orientation="Vertical">
                     <TextBlock
                         Margin="0,0,0,12"
-                        Text="v2.4.0 ChatTailor AI:"
+                        Text="v2.4.1 ChatTailor AI:"
                         TextDecorations="Underline"
-                        TextWrapping="Wrap" />
-                    <TextBlock
-                        Margin="0,0,0,12"
-                        Text="• Added latest OpenAI gpt-4o models, o1 preview reasoning models as options"
-                        TextWrapping="Wrap" />
-                    <TextBlock
-                        Margin="0,0,0,12"
-                        Text="• Added latest Anthropic Claude 3.5 Sonnet model"
                         TextWrapping="Wrap" />
                     <TextBlock
                         Margin="0,0,0,12"

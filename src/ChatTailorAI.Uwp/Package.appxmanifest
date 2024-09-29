@@ -10,7 +10,7 @@
   <Identity
     Name="17325HunterJohnson.ChatTailorAI"
     Publisher="CN=7E9AA0BA-92B9-4274-B9BB-343DA3A9765C"
-    Version="2.4.0.0" />
+    Version="2.4.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="145d555a-796f-464e-88f3-ff3829795b85" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

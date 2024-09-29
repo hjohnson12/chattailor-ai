@@ -792,12 +792,12 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
 
             var userMessageViewModel = await CreateNewUserMessage(message, imageUris);
             Messages.Add(userMessageViewModel);
+            var model = CurrentConversation.Model ?? SelectedModel;
 
-            var assistantMessageViewModel = CreateTemporaryAssistantMessage();
+            var assistantMessageViewModel = CreateTemporaryAssistantMessage(model);
             Messages.Add(assistantMessageViewModel);
             newMessageIndex = Messages.IndexOf(assistantMessageViewModel);
 
-            var model = CurrentConversation.Model ?? SelectedModel;
 
             try
             {
@@ -832,7 +832,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
 
                     // If streaming is enabled, the message is already set in Messages due to the 
                     // OnChatMessageReceived event
-                    if (!IsStreamingEnabled)
+                    if (!IsStreamingEnabled || ModelConstants.ModelsWithoutStreamingSupport.Contains(model))
                     {
                         // TODO: Look into updating the message instead of replacing it
                         // May have render issues like this
@@ -975,9 +975,12 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             return _chatMessageViewModelFactory.CreateViewModelFromDto(dto);
         }
 
-        private ChatMessageViewModel CreateTemporaryAssistantMessage()
+        private ChatMessageViewModel CreateTemporaryAssistantMessage(string model)
         {
-            var tempMessage = IsStreamingEnabled ? "" : "Assistant is typing...";
+            var tempMessage = (IsStreamingEnabled && !ModelConstants.ModelsWithoutStreamingSupport.Contains(model)) 
+                ? "" 
+                : "Assistant is typing...";
+
             var assistantMessageDto = new ChatMessageDto
             {
                 Role = "assistant",

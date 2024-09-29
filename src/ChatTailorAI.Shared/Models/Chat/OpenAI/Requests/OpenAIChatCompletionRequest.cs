@@ -50,16 +50,16 @@ namespace ChatTailorAI.Shared.Models.Chat.OpenAI.Requests
         [JsonProperty("messages")]
         public List<OpenAIBaseChatMessageDto> Messages { get; set; }
 
-        [JsonProperty("max_tokens")]
-        public int MaxTokens { get; set; }
+        [JsonProperty("max_completion_tokens")]
+        public int MaxCompletionTokens { get; set; }
 
         [JsonProperty("n")]
         public int N { get; set; }
 
         [JsonProperty("stop", NullValueHandling = NullValueHandling.Ignore)]
         public string Stop { get; set; }
-        [JsonProperty("stream")]
-        public bool Stream { get; set; }
+        [JsonProperty("stream", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? Stream { get; set; }
 
         [JsonProperty(PropertyName = "functions", NullValueHandling = NullValueHandling.Ignore)]
         public List<RootObject> Functions { get; set; }
@@ -67,13 +67,13 @@ namespace ChatTailorAI.Shared.Models.Chat.OpenAI.Requests
         [JsonProperty(PropertyName = "function_call", NullValueHandling = NullValueHandling.Ignore)]
         public string FunctionCall { get; set; }
 
-        [JsonProperty("frequency_penalty")]
-        public double FrequencyPenalty { get; set; }
+        [JsonProperty("frequency_penalty", NullValueHandling = NullValueHandling.Ignore)]
+        public double? FrequencyPenalty { get; set; }
 
-        [JsonProperty("presence_penalty")]
-        public double PresencePenalty { get; set; }
+        [JsonProperty("presence_penalty", NullValueHandling = NullValueHandling.Ignore)]
+        public double? PresencePenalty { get; set; }
 
-        [JsonProperty("temperature")]
-        public double Temperature { get; set; }
+        [JsonProperty("temperature", NullValueHandling = NullValueHandling.Ignore)]
+        public double? Temperature { get; set; }
     }
 }

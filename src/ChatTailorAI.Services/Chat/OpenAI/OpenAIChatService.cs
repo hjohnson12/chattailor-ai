@@ -143,7 +143,7 @@ namespace ChatTailorAI.Services.Chat.OpenAI
             {
                 Model = chatRequest.Model,
                 Messages = chatRequest.Messages,
-                MaxTokens = chatRequest.Settings.MaxTokens,
+                MaxCompletionTokens = chatRequest.Settings.MaxTokens,
                 N = 1,
                 Stop = null,
                 FrequencyPenalty = chatRequest.Settings.FrequencyPenalty,
@@ -168,7 +168,8 @@ namespace ChatTailorAI.Services.Chat.OpenAI
             {
                 Model = chatRequest.Model,
                 Messages = messages,
-                MaxTokens = chatRequest.Settings.MaxTokens,
+                N = 1,
+                MaxCompletionTokens = chatRequest.Settings.MaxTokens,
             };
         }
 
