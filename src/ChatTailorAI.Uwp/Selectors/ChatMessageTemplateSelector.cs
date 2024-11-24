@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
 using ChatTailorAI.Shared.ViewModels;
 
 namespace ChatTailorAI.Uwp.Selectors

@@ -1,6 +1,6 @@
-﻿using Microsoft.Xaml.Interactivity;
-using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml;
+using Microsoft.Xaml.Interactivity;
 
 namespace ChatTailorAI.Uwp.Behaviors
 {
