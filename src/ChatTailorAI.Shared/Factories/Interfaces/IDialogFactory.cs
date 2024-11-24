@@ -1,12 +1,12 @@
-﻿using ChatTailorAI.Shared.Dto;
+﻿using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Dto.Conversations;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Shared.Factories.Interfaces
 {
+    /// <summary>
+    /// Factory interface for creating dialogs.
+    /// </summary>
     public interface IDialogFactory
     {
         Task ShowDialogAsync<T>(T dialog) where T : class;

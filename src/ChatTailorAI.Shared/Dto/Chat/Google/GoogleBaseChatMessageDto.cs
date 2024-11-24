@@ -1,9 +1,5 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Anthropic;
+﻿using Newtonsoft.Json;
 using ChatTailorAI.Shared.Models.Chat;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Dto.Chat.Google
 {

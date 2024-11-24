@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Events
+﻿namespace ChatTailorAI.Shared.Events
 {
     public class NotificationRaisedEvent
     {

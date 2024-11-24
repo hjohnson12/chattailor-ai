@@ -1,14 +1,12 @@
 ﻿using System;
-using ChatTailorAI;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Storage;
 using ChatTailorAI.Shared.Services.Files;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace ChatTailorAI.Services.Uwp.FileManagement
 {

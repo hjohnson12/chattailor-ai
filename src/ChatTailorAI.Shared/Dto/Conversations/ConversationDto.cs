@@ -1,8 +1,5 @@
-﻿using ChatTailorAI.Shared.Models.Assistants;
+﻿using System;
 using ChatTailorAI.Shared.Models.Conversations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Dto.Conversations
 {

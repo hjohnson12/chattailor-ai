@@ -1,9 +1,6 @@
 ﻿using ChatTailorAI.Shared.Dto.Chat.OpenAI;
 using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Shared.Models.Chat.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Mappers.OpenAI
 {

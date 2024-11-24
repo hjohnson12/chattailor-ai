@@ -1,11 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Common;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using ChatTailorAI.Shared.Dto.Chat.OpenAI;
+using ChatTailorAI.Shared.Models.Chat.OpenAI;
 
 namespace ChatTailorAI.Shared.Builders
 {

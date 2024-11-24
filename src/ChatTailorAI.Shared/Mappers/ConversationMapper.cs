@@ -3,9 +3,6 @@ using ChatTailorAI.Shared.Dto.Conversations.OpenAI;
 using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Shared.Models.Conversations;
 using ChatTailorAI.Shared.Models.Conversations.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Mappers
 {

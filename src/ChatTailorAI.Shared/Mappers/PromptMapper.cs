@@ -1,9 +1,6 @@
 ﻿using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Shared.Models.Prompts;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Mappers
 {

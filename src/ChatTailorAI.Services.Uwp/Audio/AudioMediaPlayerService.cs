@@ -1,13 +1,10 @@
-﻿using ChatTailorAI.Shared.Services.Common;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.Storage.Streams;
+using ChatTailorAI.Shared.Services.Common;
 
 namespace ChatTailorAI.Services.Uwp.Audio
 {

@@ -1,14 +1,10 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using Windows.Storage.Streams;
+using Newtonsoft.Json;
 using Windows.Storage;
-using ChatTailorAI.Shared.Models.Prompts;
-using System.Diagnostics;
 using ChatTailorAI.Shared.Services.Files;
 using ChatTailorAI.Shared.Dto;
 

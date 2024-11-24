@@ -3,12 +3,9 @@ using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.ApplicationModel.Core;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Graphics.Imaging;
 using Windows.Storage.Streams;
-using Windows.UI.Core;
-using Windows.UI.ViewManagement;
 using ChatTailorAI.Shared.Dto.Chat;
 using ChatTailorAI.Shared.Services.Common;
 

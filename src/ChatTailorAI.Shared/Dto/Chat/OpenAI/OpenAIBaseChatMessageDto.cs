@@ -1,9 +1,6 @@
-﻿using ChatTailorAI.Shared.Models.Chat;
+﻿using Newtonsoft.Json;
+using ChatTailorAI.Shared.Models.Chat;
 using ChatTailorAI.Shared.Models.Chat.OpenAI.Responses;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Dto.Chat.OpenAI
 {
