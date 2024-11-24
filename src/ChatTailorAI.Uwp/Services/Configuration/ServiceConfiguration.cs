@@ -155,8 +155,8 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddHttpClient<IFileDownloadService, FileDownloadService>();
             services.AddSingleton<IChatFileService, ChatFileService>();
             services.AddHttpClient<IOpenAIChatService, OpenAIChatService>();
-            services.AddHttpClient<IAnthropicChatService, AnthropicClaudeChatService>();
-            services.AddHttpClient<IGoogleChatService, GoogleGeminiChatService>();
+            services.AddHttpClient<IAnthropicChatService, AnthropicChatService>();
+            services.AddHttpClient<IGoogleChatService, GoogleChatService>();
             services.AddHttpClient<ILMStudioChatService, LMStudioChatService>();
             services.AddHttpClient<IDalleImageService, DalleImageService>();
             services.AddSingleton<IAzureSpeechService, AzureSpeechService>();

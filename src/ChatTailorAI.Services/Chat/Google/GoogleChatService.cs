@@ -1,7 +1,6 @@
 ﻿using ChatTailorAI.Shared.Dto.Chat.Anthropic;
 using ChatTailorAI.Shared.Dto.Chat.Google;
 using ChatTailorAI.Shared.Events;
-using ChatTailorAI.Shared.Models.Chat.Anthropic.Requests;
 using ChatTailorAI.Shared.Models.Chat.Google;
 using ChatTailorAI.Shared.Models.Chat.Google.Content;
 using ChatTailorAI.Shared.Models.Chat.Google.Requests;
@@ -45,11 +44,11 @@ namespace ChatTailorAI.Services.Chat.Google
         public double Temperature { get; set; }
     }
 
-    public class GoogleGeminiChatService : IGoogleChatService
+    public class GoogleChatService : IGoogleChatService
     {
         private readonly IUserSettingsService _userSettingsService;
         private readonly IAppSettingsService _appSettingsService;
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
         private readonly HttpClient _httpClient;
         private CancellationTokenSource _cancellationTokenSource;
@@ -74,7 +73,7 @@ namespace ChatTailorAI.Services.Chat.Google
 
         private Dictionary<string, ModelSetting> modelSettings;
 
-        public GoogleGeminiChatService(
+        public GoogleChatService(
             IUserSettingsService userSettingsService,
             IAppSettingsService appSettingsService,
             IEventAggregator eventAggregator,
@@ -251,10 +250,8 @@ namespace ChatTailorAI.Services.Chat.Google
             {
                 return modelSettings[key];
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public bool ValidateApiKey()

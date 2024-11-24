@@ -1,11 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Google;
-using ChatTailorAI.Shared.Models.Chat.Google;
-using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Chat.Google;
+﻿using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,27 +10,25 @@ using ChatTailorAI.Shared.Services.Chat.Anthropic;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Events;
 using ChatTailorAI.Shared.Dto.Chat.Anthropic;
 using ChatTailorAI.Shared.Models.Chat.Anthropic;
-using ChatTailorAI.Shared.Models.Chat;
 using Newtonsoft.Json;
 using System.IO;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Responses;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Requests;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Content;
-using ChatTailorAI.Shared.Services.Chat;
 
 namespace ChatTailorAI.Services.Chat.Anthropic
 {
-    public class AnthropicClaudeChatService : IAnthropicChatService
+    public class AnthropicChatService : IAnthropicChatService
     {
         private readonly IUserSettingsService _userSettingsService;
         private readonly IAppSettingsService _appSettingsService;
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
         private readonly HttpClient _httpClient;
         private CancellationTokenSource _cancellationTokenSource;
 
-        public AnthropicClaudeChatService(
+        public AnthropicChatService(
             IUserSettingsService userSettingsService,
             IAppSettingsService appSettingsService,
             IEventAggregator eventAggregator,
@@ -176,8 +170,10 @@ namespace ChatTailorAI.Services.Chat.Anthropic
 
         private async Task<HttpResponseMessage> SendMessagesRequest(AnthropicMessagesRequest body, string endpoint, CancellationTokenSource cancellationTokenSource)
         {
-            var request = new HttpRequestMessage(HttpMethod.Post, endpoint);
-            request.Content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json");
+            var request = new HttpRequestMessage(HttpMethod.Post, endpoint)
+            {
+                Content = new StringContent(JsonConvert.SerializeObject(body), Encoding.UTF8, "application/json")
+            };
 
             var response = await _httpClient.SendAsync(request, cancellationTokenSource.Token);
             return response;

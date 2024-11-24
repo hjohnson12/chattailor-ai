@@ -60,15 +60,16 @@ namespace ChatTailorAI.Services.Chat.OpenAI
                 _appSettingsService.OpenAiApiKey :
                 _userSettingsService.Get<string>(UserSettings.OpenAiApiKey);
 
-            client = new HttpClient { Timeout = TimeSpan.FromMinutes(4) };
-            client.BaseAddress = new Uri("https://api.openai.com/");
-            client.Timeout = TimeSpan.FromMinutes(4);
+            client = new HttpClient
+            {
+                Timeout = TimeSpan.FromMinutes(4),
+                BaseAddress = new Uri("https://api.openai.com/")
+            };
             client.DefaultRequestHeaders.Clear();
             client.DefaultRequestHeaders.Add("Authorization", $"Bearer {openAiApiKey}");
             _httpClient = client;
 
             _functions = RetrieveSelectedFunctions();
-
             _cancellationTokenSource = new CancellationTokenSource();
         }
 
