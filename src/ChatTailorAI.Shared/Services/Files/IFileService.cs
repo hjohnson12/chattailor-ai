@@ -1,10 +1,6 @@
-﻿using ChatTailorAI.Shared.Dto;
-using ChatTailorAI.Shared.Models.Prompts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
 
 namespace ChatTailorAI.Shared.Services.Files
 {

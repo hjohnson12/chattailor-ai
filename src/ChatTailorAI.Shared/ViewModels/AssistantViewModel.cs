@@ -1,10 +1,6 @@
 ﻿using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Models.Assistants;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows.Input;
 
 namespace ChatTailorAI.Shared.ViewModels
 {

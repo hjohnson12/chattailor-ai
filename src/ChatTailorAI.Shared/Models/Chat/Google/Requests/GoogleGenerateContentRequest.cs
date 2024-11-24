@@ -1,8 +1,6 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Google;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ChatTailorAI.Shared.Dto.Chat.Google;
 
 namespace ChatTailorAI.Shared.Models.Chat.Google.Requests
 {

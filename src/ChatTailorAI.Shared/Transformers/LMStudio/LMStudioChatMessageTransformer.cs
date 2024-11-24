@@ -4,7 +4,6 @@ using ChatTailorAI.Shared.Models.Chat;
 using ChatTailorAI.Shared.Services.Files;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ChatTailorAI.Shared.Transformers.LMStudio

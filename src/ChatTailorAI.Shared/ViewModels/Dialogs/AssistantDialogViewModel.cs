@@ -2,7 +2,6 @@
 using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Assistants;
-using ChatTailorAI.Shared.Models.Shared;
 using ChatTailorAI.Shared.Models.Tools;
 using ChatTailorAI.Shared.Resources;
 using ChatTailorAI.Shared.Services.Common;
@@ -12,7 +11,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs

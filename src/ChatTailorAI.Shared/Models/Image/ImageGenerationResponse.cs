@@ -1,7 +1,4 @@
-﻿using ChatTailorAI.Shared.Models.Image.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace ChatTailorAI.Shared.Models.Image
 {

@@ -1,13 +1,8 @@
 ﻿using ChatTailorAI.Shared.Base;
-using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Dto.Conversations;
 using ChatTailorAI.Shared.Dto.Conversations.OpenAI;
 using ChatTailorAI.Shared.Models.Assistants;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Xml.Linq;
 
 namespace ChatTailorAI.Shared.ViewModels
 {
@@ -27,7 +22,6 @@ namespace ChatTailorAI.Shared.ViewModels
 
         public ConversationViewModel()
         {
-            
         }
 
         public string Id

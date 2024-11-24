@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Models.Chat.LMStudio
+﻿namespace ChatTailorAI.Shared.Models.Chat.LMStudio
 {
     public class LMStudioChatSettings : ChatSettings
     {

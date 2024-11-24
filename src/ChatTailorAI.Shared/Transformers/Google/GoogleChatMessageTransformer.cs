@@ -1,13 +1,11 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Anthropic;
-using ChatTailorAI.Shared.Dto.Chat;
-using ChatTailorAI.Shared.Models.Chat;
-using ChatTailorAI.Shared.Services.Files;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using ChatTailorAI.Shared.Dto.Chat.Google;
 using ChatTailorAI.Shared.Models.Chat.Google.Content;
+using ChatTailorAI.Shared.Dto.Chat;
+using ChatTailorAI.Shared.Models.Chat;
+using ChatTailorAI.Shared.Services.Files;
 
 namespace ChatTailorAI.Shared.Transformers.Google
 {

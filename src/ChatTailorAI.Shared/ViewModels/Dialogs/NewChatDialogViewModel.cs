@@ -2,18 +2,14 @@
 using ChatTailorAI.Shared.Dto.Conversations;
 using ChatTailorAI.Shared.Dto.Conversations.OpenAI;
 using ChatTailorAI.Shared.Enums;
-using ChatTailorAI.Shared.Models.Assistants;
-using ChatTailorAI.Shared.Models.Conversations;
 using ChatTailorAI.Shared.Resources;
 using ChatTailorAI.Shared.Services.Assistants.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.DataServices;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 

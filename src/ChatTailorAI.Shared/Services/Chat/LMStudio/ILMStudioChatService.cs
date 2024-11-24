@@ -1,11 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.LMStudio;
-using ChatTailorAI.Shared.Dto.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Chat.LMStudio;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto.Chat.LMStudio;
+using ChatTailorAI.Shared.Models.Chat.LMStudio;
 
 namespace ChatTailorAI.Shared.Services.Chat.LMStudio
 {

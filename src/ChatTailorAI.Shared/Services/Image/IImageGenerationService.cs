@@ -1,7 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto;
+﻿using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
 using ChatTailorAI.Shared.Models.Image;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Shared.Services.Image
 {

@@ -34,7 +34,6 @@ using ChatTailorAI.Services.DataServices;
 using ChatTailorAI.Shared.Services.Chat.OpenAI;
 using ChatTailorAI.Shared.Services.Tools;
 using ChatTailorAI.Shared.Services.Authentication;
-using ChatTailorAI.Shared.Models.Speech;
 using ChatTailorAI.Shared.Services.Files;
 using ChatTailorAI.Shared.Factories.ViewModels;
 using ChatTailorAI.Shared.Builders;
@@ -44,8 +43,6 @@ using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Services.Chat.OpenAI;
 using ChatTailorAI.Shared.ViewModels.Dialogs;
 using ChatTailorAI.Shared.ViewModels.Pages;
-using ChatTailorAI.Shared.Services.Prompts;
-using ChatTailorAI.Services.Prompts;
 using ChatTailorAI.DataAccess.Database.Providers.SQLite;
 using ChatTailorAI.Shared.Transformers.Anthropic;
 using ChatTailorAI.Shared.Services.Chat.Anthropic;
@@ -178,7 +175,6 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddSingleton<ISpeechService, SpeechService>();
             services.AddSingleton<IImageGenerationService, ImageGenerationService>();
             services.AddSingleton<IApplicationViewService, ApplicationViewService>();
-            services.AddSingleton<IPromptService, PromptService>();
             services.AddSingleton<IModelManagerService, ModelManagerService>();
 
             // Transformers

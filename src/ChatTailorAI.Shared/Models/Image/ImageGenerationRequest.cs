@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Models.Image
+﻿namespace ChatTailorAI.Shared.Models.Image
 {
     public class ImageGenerationRequest<TSettings>
     {

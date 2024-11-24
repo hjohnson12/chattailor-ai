@@ -1,7 +1,5 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Anthropic;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
+using ChatTailorAI.Shared.Dto.Chat.Anthropic;
 
 namespace ChatTailorAI.Shared.Models.Chat.Anthropic
 {

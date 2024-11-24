@@ -1,8 +1,6 @@
 ﻿using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Dto.Chat;
 using ChatTailorAI.Shared.Events;
-using ChatTailorAI.Shared.Models.Image;
-using ChatTailorAI.Shared.Models.Image.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.DataServices;
 using ChatTailorAI.Shared.Services.Events;
@@ -12,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 

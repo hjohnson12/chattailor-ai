@@ -1,10 +1,7 @@
-﻿using ChatTailorAI.Shared.Models.Chat.Anthropic.Converters;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 using ChatTailorAI.Shared.Models.Chat.Google.Content;
 using ChatTailorAI.Shared.Models.Chat.Google.Converters;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Models.Chat.Google.Responses
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Models.Shared
+﻿namespace ChatTailorAI.Shared.Models.Shared
 {
     public class FunctionListItem
     {

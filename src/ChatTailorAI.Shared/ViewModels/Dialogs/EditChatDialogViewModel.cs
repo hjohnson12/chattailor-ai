@@ -1,13 +1,10 @@
 ﻿using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Dto.Conversations;
-using ChatTailorAI.Shared.Resources;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.DataServices;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs
