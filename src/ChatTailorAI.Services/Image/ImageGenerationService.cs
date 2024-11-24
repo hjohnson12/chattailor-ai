@@ -1,13 +1,10 @@
-﻿using ChatTailorAI.Shared.Dto;
+﻿using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Models.Image;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
 using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Image;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Services.Image
 {

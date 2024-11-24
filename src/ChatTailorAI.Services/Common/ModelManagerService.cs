@@ -1,10 +1,10 @@
-﻿using ChatTailorAI.Shared.Resources;
-using ChatTailorAI.Shared.Services.Chat.LMStudio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Resources;
+using ChatTailorAI.Shared.Services.Chat.LMStudio;
 
 namespace ChatTailorAI.Services.Common
 {

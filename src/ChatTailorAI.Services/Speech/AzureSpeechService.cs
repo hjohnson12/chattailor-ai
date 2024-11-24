@@ -1,16 +1,15 @@
-﻿using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Models.Speech;
-using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Speech;
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+using Newtonsoft.Json;
+using ChatTailorAI.Shared.Models.Settings;
+using ChatTailorAI.Shared.Models.Speech;
+using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Speech;
 
 namespace ChatTailorAI.Services.Speech
 {

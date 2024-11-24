@@ -1,14 +1,11 @@
-﻿using ChatTailorAI.DataAccess.Database;
-using ChatTailorAI.DataAccess.Database.Providers.SQLite;
-using ChatTailorAI.Shared.Models.Assistants;
-using ChatTailorAI.Shared.Models.Chat;
-using ChatTailorAI.Shared.Services.Database.Repositories;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ChatTailorAI.DataAccess.Database.Providers.SQLite;
+using ChatTailorAI.Shared.Models.Chat;
+using ChatTailorAI.Shared.Services.Database.Repositories;
 
 namespace ChatTailorAI.DataAccess.Repositories
 {

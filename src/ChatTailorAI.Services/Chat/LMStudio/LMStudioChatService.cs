@@ -1,4 +1,15 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.LMStudio;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ChatTailorAI.Shared.Dto.Chat.LMStudio;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Chat.LMStudio;
 using ChatTailorAI.Shared.Models.Chat.LMStudio.Requests;
@@ -9,17 +20,6 @@ using ChatTailorAI.Shared.Services.Chat.LMStudio;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Tools;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Services.Chat.LMStudio
 {

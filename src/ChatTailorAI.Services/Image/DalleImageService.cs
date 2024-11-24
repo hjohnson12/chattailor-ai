@@ -1,4 +1,10 @@
-﻿using ChatTailorAI.Services.Events;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Events.EventArgs;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
@@ -6,14 +12,6 @@ using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Image;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
 
 namespace ChatTailorAI.Services.Image
 {

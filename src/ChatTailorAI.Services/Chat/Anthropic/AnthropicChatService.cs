@@ -1,21 +1,22 @@
-﻿using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Events;
+﻿
 using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
-using ChatTailorAI.Shared.Services.Chat.Anthropic;
-using ChatTailorAI.Shared.Models.Chat.Anthropic.Events;
-using ChatTailorAI.Shared.Dto.Chat.Anthropic;
-using ChatTailorAI.Shared.Models.Chat.Anthropic;
-using Newtonsoft.Json;
 using System.IO;
+using Newtonsoft.Json;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Responses;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Requests;
 using ChatTailorAI.Shared.Models.Chat.Anthropic.Content;
+using ChatTailorAI.Shared.Models.Settings;
+using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Events;
+using ChatTailorAI.Shared.Services.Chat.Anthropic;
+using ChatTailorAI.Shared.Models.Chat.Anthropic.Events;
+using ChatTailorAI.Shared.Dto.Chat.Anthropic;
+using ChatTailorAI.Shared.Models.Chat.Anthropic;
 
 namespace ChatTailorAI.Services.Chat.Anthropic
 {

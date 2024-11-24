@@ -1,4 +1,16 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.OpenAI;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using ChatTailorAI.Shared.Dto.Chat.OpenAI;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Events.EventArgs;
 using ChatTailorAI.Shared.Models.Chat.OpenAI;
@@ -11,18 +23,7 @@ using ChatTailorAI.Shared.Services.Chat.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Tools;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace ChatTailorAI.Services.Chat.OpenAI
 {

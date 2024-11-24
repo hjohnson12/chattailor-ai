@@ -1,16 +1,15 @@
-﻿using ChatTailorAI.Shared.Models.Audio;
-using ChatTailorAI.Shared.Services.Common;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Newtonsoft.Json;
 //using Windows.Security.Authentication.Web; // Broker not working in UWP
+using ChatTailorAI.Shared.Models.Audio;
+using ChatTailorAI.Shared.Services.Common;
 
 namespace ChatTailorAI.Services.Tools
 {

@@ -1,13 +1,13 @@
-﻿using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Speech;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ChatTailorAI.Shared.Models.Settings;
+using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Speech;
 
 namespace ChatTailorAI.Services.Speech
 {
