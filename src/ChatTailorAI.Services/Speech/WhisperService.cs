@@ -12,11 +12,11 @@ namespace ChatTailorAI.Services.Speech
 {
     public class WhisperService : IWhisperService
     {
-        private string whisperApiUrl = "https://api.openai.com/";
-        private string TRANSCRIPTION_API_ENDPOINT = "v1/audio/transcriptions";
-        private string TRANSLATION_API_ENDPOINT = "v1/audio/translations";
-        private IAppSettingsService _appSettingsService;
-        private IUserSettingsService _userSettingsService;
+        private readonly string whisperApiUrl = "https://api.openai.com/";
+        private readonly string TRANSCRIPTION_API_ENDPOINT = "v1/audio/transcriptions";
+        private readonly string TRANSLATION_API_ENDPOINT = "v1/audio/translations";
+        private readonly IAppSettingsService _appSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private static HttpClient _httpClient;
 
         public WhisperService(

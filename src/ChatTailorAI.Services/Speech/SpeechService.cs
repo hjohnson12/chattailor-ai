@@ -35,8 +35,8 @@ namespace ChatTailorAI.Services.Speech
                 switch (speechProvider)
                 {
                     case "azure":
-                        // Azure lib uses built in .NET audio player
                         await _azureSpeechService.SynthesizeSpeechAsync(text);
+                        // Azure SDK uses built in .NET audio player, no need to use our custom audio player
                         break;
                     case "openai":
                         var openAIStream = await _openAISpeechService.SynthesizeSpeechAsync(text);

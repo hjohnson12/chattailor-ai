@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Windows.Storage;
 using ChatTailorAI.Shared.Services.Files;
 using ChatTailorAI.Shared.Dto;
+using Windows.Storage.Pickers;
 
 namespace ChatTailorAI.Services.Uwp.FileManagement
 {
@@ -14,40 +15,40 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
     {
         public async Task SaveToFileAsync(string filename, string data)
         {
-            var savePicker = new Windows.Storage.Pickers.FileSavePicker
+            var savePicker = new FileSavePicker
             {
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary
+                SuggestedStartLocation = PickerLocationId.DocumentsLibrary
             };
 
             savePicker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
 
             savePicker.SuggestedFileName = filename;
 
-            Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+            StorageFile file = await savePicker.PickSaveFileAsync();
 
             if (file != null)
             {
-                Windows.Storage.CachedFileManager.DeferUpdates(file);
+                CachedFileManager.DeferUpdates(file);
 
-                await Windows.Storage.FileIO.WriteTextAsync(file, data);
+                await FileIO.WriteTextAsync(file, data);
 
-                await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+                await CachedFileManager.CompleteUpdatesAsync(file);
             }
         }
 
         public async Task<string> ReadFromFileAsync()
         {
-            var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
+            var openPicker = new FileOpenPicker();
 
-            openPicker.ViewMode = Windows.Storage.Pickers.PickerViewMode.List;
-            openPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary;
+            openPicker.ViewMode = PickerViewMode.List;
+            openPicker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
             openPicker.FileTypeFilter.Add(".txt");
 
-            Windows.Storage.StorageFile file = await openPicker.PickSingleFileAsync();
+            StorageFile file = await openPicker.PickSingleFileAsync();
 
             if (file != null)
             {
-                string data = await Windows.Storage.FileIO.ReadTextAsync(file);
+                string data = await FileIO.ReadTextAsync(file);
                 return data;
             }
             else
@@ -58,19 +59,19 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
 
         public async Task UpdatePromptsFlieAsync(List<PromptDto> prompts)
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
             var file = await localFolder
-                .CreateFileAsync("prompts.json", Windows.Storage.CreationCollisionOption.ReplaceExisting);
-            await Windows.Storage.FileIO.WriteTextAsync(file, JsonConvert.SerializeObject(prompts));
+                .CreateFileAsync("prompts.json", CreationCollisionOption.ReplaceExisting);
+            await FileIO.WriteTextAsync(file, JsonConvert.SerializeObject(prompts));
         }
 
         public async Task<List<PromptDto>> GetPromptsAsync()
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
             try
             {
                 var readFile = await localFolder.GetFileAsync("prompts.json");
-                return JsonConvert.DeserializeObject<List<PromptDto>>(await Windows.Storage.FileIO.ReadTextAsync(readFile));
+                return JsonConvert.DeserializeObject<List<PromptDto>>(await FileIO.ReadTextAsync(readFile));
             }
             catch (FileNotFoundException)
             {
@@ -80,18 +81,18 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
 
         public async Task AppendPromptToFileAsync(PromptDto prompt)
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
-            var file = await localFolder.CreateFileAsync("prompts.json", Windows.Storage.CreationCollisionOption.OpenIfExists);
+            var localFolder = ApplicationData.Current.LocalFolder;
+            var file = await localFolder.CreateFileAsync("prompts.json", CreationCollisionOption.OpenIfExists);
 
             var promptJson = JsonConvert.SerializeObject(prompt);
 
             // Append the new prompt to the file with a newline at the end
-            await Windows.Storage.FileIO.AppendTextAsync(file, promptJson + "\n");
+            await FileIO.AppendTextAsync(file, promptJson + "\n");
         }
 
         public async Task<bool> CheckIfFileExists(string filename)
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
             try
             {
                 var readFile = await localFolder.GetFileAsync(filename);
@@ -107,10 +108,10 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
         {
             try
             {
-                var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+                var localFolder = ApplicationData.Current.LocalFolder;
                 var file = await localFolder.GetFileAsync("prompts.json");
 
-                var lines = await Windows.Storage.FileIO.ReadLinesAsync(file);
+                var lines = await FileIO.ReadLinesAsync(file);
 
                 var prompts = lines.Select(line => JsonConvert.DeserializeObject<PromptDto>(line)).ToList();
 
@@ -124,10 +125,10 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
 
         public async Task DeletePromptAsync(string promptId)
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
             var file = await localFolder.GetFileAsync("prompts.json");
 
-            var lines = await Windows.Storage.FileIO.ReadLinesAsync(file);
+            var lines = await FileIO.ReadLinesAsync(file);
 
             var newLines = new List<string>();
 
@@ -140,31 +141,31 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
                 }
             }
 
-            await Windows.Storage.FileIO.WriteLinesAsync(file, newLines);
+            await FileIO.WriteLinesAsync(file, newLines);
         }
 
         public async Task UpdatePromptsAsync(List<PromptDto> prompts)
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
             var file = await localFolder.GetFileAsync("prompts.json");
 
             List<string> newLines = prompts
                 .Select(prompt => JsonConvert.SerializeObject(prompt))
                 .ToList();
 
-            await Windows.Storage.FileIO.WriteLinesAsync(file, newLines);
+            await FileIO.WriteLinesAsync(file, newLines);
         }
 
         public async Task BackupPromptsAsync()
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
 
             try
             {
                 var file = await localFolder.GetFileAsync("prompts.json");
                 if (file != null)
                 {
-                    var backupFolder = await localFolder.CreateFolderAsync("Backups", Windows.Storage.CreationCollisionOption.OpenIfExists);
+                    var backupFolder = await localFolder.CreateFolderAsync("Backups", CreationCollisionOption.OpenIfExists);
                     await file.CopyAsync(backupFolder, "prompts.json", NameCollisionOption.GenerateUniqueName);
                 }
             }
@@ -176,7 +177,7 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
 
         public async Task DeletePromptsAsync()
         {
-            var localFolder = Windows.Storage.ApplicationData.Current.LocalFolder;
+            var localFolder = ApplicationData.Current.LocalFolder;
 
             try
             {
@@ -192,6 +193,5 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
                 throw new Exception($"Failed to delete prompts: {ex.Message}");
             }
         }
-
     }
 }

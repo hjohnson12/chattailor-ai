@@ -23,37 +23,4 @@ namespace ChatTailorAI.Shared.Builders
             return openAIChatRequest;
         }
     }
-
-    //public class OpenAIChatRequestBuilder 
-    //    : IChatRequestBuilder<OpenAIChatRequest, OpenAIBaseChatMessageDto, OpenAIChatSettings>
-    //{
-    //    public OpenAIChatRequest BuildChatRequest(string model, string instructions, IEnumerable<OpenAIBaseChatMessageDto> messages, OpenAIChatSettings settings)
-    //    {
-    //        var openAIChatRequest = new OpenAIChatRequest
-    //        {
-    //            Model = model,
-    //            Instructions = instructions,
-    //            Messages = messages.ToList(),
-    //            Settings = settings
-    //        };
-
-    //        return openAIChatRequest;
-    //    }
-    //}
-
-    //public class OpenAIChatRequestBuilder : IChatRequestBuilder<OpenAIChatRequest, OpenAIBaseChatMessageDto, OpenAIChatSettings>
-    //{
-    //    public OpenAIChatRequest BuildChatRequest(string model, string instructions, IEnumerable<OpenAIBaseChatMessageDto> messages, OpenAIChatSettings settings)
-    //    {
-    //        var openAIChatRequest = new OpenAIChatRequest
-    //        {
-    //            Model = model,
-    //            Instructions = instructions,
-    //            Messages = messages.ToList(),
-    //            Settings = settings
-    //        };
-
-    //        return openAIChatRequest;
-    //    }
-    //}
 }

@@ -15,8 +15,8 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
     /// </summary>
     public class FileDownloadService : IFileDownloadService
     {
-        private HttpClient _httpClient;
-        private IFolderService _folderService;
+        private readonly HttpClient _httpClient;
+        private readonly IFolderService _folderService;
 
         public FileDownloadService(HttpClient client, IFolderService folderService)
         {
@@ -97,12 +97,21 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
             }
         }
 
-
+        /// <summary>
+        /// Downloads a file asynchronously from a given url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<byte[]> DownloadFileAsync(string url)
         {
             return await _httpClient.GetByteArrayAsync(url);
         }
 
+        /// <summary>
+        /// Downloads multiple files asynchronously from given urls
+        /// </summary>
+        /// <param name="urls"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<byte[]>> DownloadFilesAsync(string[] urls)
         {
             return await Task.WhenAll(urls.Select(DownloadFileAsync));

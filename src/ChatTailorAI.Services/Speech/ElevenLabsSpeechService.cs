@@ -29,9 +29,8 @@ namespace ChatTailorAI.Services.Speech
         private IAppSettingsService _appSettingsService;
         private IUserSettingsService _userSettingsService;
         private static HttpClient _httpClient;
-        private string[] models;
-        private string[] voices;
-
+        private readonly string[] models;
+        private readonly string[] voices;
         private readonly string elevenLabsApiUrl = "https://api.elevenlabs.io/";
 
         public ElevenLabsSpeechService(
@@ -42,8 +41,7 @@ namespace ChatTailorAI.Services.Speech
             _appSettingsService = appSettingsService;
             _userSettingsService = userSettingsService;
 
-            // TODO: Update with ones from ElevenLabs apis
-
+            // TODO: Update with other valid models from ElevenLabs
             this.models = new string[] { "eleven_multilingual_v2" };
             this.voices = new string[] { };
 
@@ -163,17 +161,23 @@ namespace ChatTailorAI.Services.Speech
 
         public async Task<List<string>> GetVoiceNamesAsync()
         {
-            // TODO: Add error handling
-            var voicesList = await this.GetVoicesListAsync();
-            var namesList = new List<string>();
-
-            foreach (var voice in voicesList)
+            try
             {
-                string name = voice.name;  
-                namesList.Add(name);
-            }
+                var voicesList = await this.GetVoicesListAsync();
+                var namesList = new List<string>();
 
-            return namesList;
+                foreach (var voice in voicesList)
+                {
+                    string name = voice.name;
+                    namesList.Add(name);
+                }
+
+                return namesList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Error while getting voice names: {ex.Message}", ex);
+            }
         }
     }
 }

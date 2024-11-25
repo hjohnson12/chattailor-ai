@@ -16,8 +16,8 @@ namespace ChatTailorAI.Services.Speech
         private IAppSettingsService _appSettingsService;
         private IUserSettingsService _userSettingsService;
         private static HttpClient _httpClient;
-        private string[] models;
-        private string[] voices;
+        private readonly string[] models;
+        private readonly string[] voices;
 
         private readonly string openAISpeechApiUrl = "https://api.openai.com/";
 

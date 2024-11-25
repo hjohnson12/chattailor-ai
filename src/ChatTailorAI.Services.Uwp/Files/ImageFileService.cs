@@ -7,31 +7,28 @@ using Windows.Storage;
 using System.Diagnostics;
 using ChatTailorAI.Shared.Models.Image;
 using ChatTailorAI.Shared.Services.Files;
+using Windows.Storage.Pickers;
 
 namespace ChatTailorAI.Services.Uwp.FileManagement
 {
     public class ImageFileService : IImageFileService
     {
-        private readonly IFileService _fileService;
         private readonly IFileDownloadService _fileDownloadService;
 
         public ImageFileService(
-            IFileService fileService,
             IFileDownloadService fileDownloadService)
         {
-            _fileService = fileService;
             _fileDownloadService = fileDownloadService;
         }
 
         public async Task<IEnumerable<string>> ChooseImagesAsync()
         {
-            var openPicker = new Windows.Storage.Pickers.FileOpenPicker();
-
-            openPicker.ViewMode = Windows.Storage.Pickers.PickerViewMode.Thumbnail;
-            openPicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.PicturesLibrary;
-            openPicker.FileTypeFilter.Add(".jpg");
-            openPicker.FileTypeFilter.Add(".jpeg");
-            openPicker.FileTypeFilter.Add(".png");
+            var openPicker = new FileOpenPicker
+            {
+                ViewMode = PickerViewMode.Thumbnail,
+                SuggestedStartLocation = PickerLocationId.PicturesLibrary,
+                FileTypeFilter = { ".jpg", ".jpeg", ".png" }
+            };
 
             var files = await openPicker.PickMultipleFilesAsync();
 

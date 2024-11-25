@@ -16,8 +16,8 @@ namespace ChatTailorAI.Services.Speech
     public class AzureSpeechService : IAzureSpeechService
     {
         private IUserSettingsService _userSettingsService;
+        private readonly string[] models;
         private string _voiceName;
-        private string[] models;
 
         public AzureSpeechService(
             IUserSettingsService userSettingsService)
