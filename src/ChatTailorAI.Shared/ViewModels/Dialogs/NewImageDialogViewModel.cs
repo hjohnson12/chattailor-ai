@@ -1,4 +1,9 @@
-﻿using ChatTailorAI.Shared.Base;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
@@ -7,11 +12,6 @@ using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Image;
-using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs
 {

@@ -1,6 +1,6 @@
-﻿using ChatTailorAI.Shared.Dto.Chat;
+﻿using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto.Chat;
 using ChatTailorAI.Shared.Models.Chat;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Shared.Transformers
 {

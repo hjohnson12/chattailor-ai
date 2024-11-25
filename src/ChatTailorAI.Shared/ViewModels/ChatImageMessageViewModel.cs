@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace ChatTailorAI.Shared.ViewModels
 {
+    /// <summary>
+    /// A view model for a chat image message.
+    /// </summary>
     public class ChatImageMessageViewModel : ChatMessageViewModel
     {
         private readonly IImageFileService _imageFileService;

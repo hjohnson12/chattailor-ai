@@ -143,7 +143,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
 
         private async Task SelectPrompt(PromptDto prompt)
         {
-            //_appNotificationService.Display("Selected prompt: " + prompt.Title);
             SelectedPrompt = prompt;
         }
 
@@ -173,18 +172,16 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             catch (Exception ex)
             {
                 _loggerService.Error(ex, "Failed to create prompt");
-
-                // TODO: Handle rollback
                 _appNotificationService.Display(ex.Message);
             }
         }
 
         private async Task DeletePrompt()
         {
-            // Delete multiple selected at one point, currently
-            // just delete the selected one if any
             try
             {
+                // Currently just delete the selected one if any
+                // TODO: Delete multiple selected at some point
                 if (SelectedPrompt == null)
                 {
                     _appNotificationService.Display("Please select a prompt to delete");

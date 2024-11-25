@@ -7,6 +7,9 @@ using System;
 
 namespace ChatTailorAI.Shared.ViewModels
 {
+    /// <summary>
+    /// A view model for a chat message.
+    /// </summary>
     public class ChatMessageViewModel : Observable
     {
         private string _id;

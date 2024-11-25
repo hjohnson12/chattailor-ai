@@ -15,6 +15,9 @@ namespace ChatTailorAI.Shared.ViewModels
         private DateTime _createdAt;
         private string _id;
 
+        // Workaround since assistant name isnt stored in conversation
+        private string _assistantName;
+
         // Properties specific to certain conversation types
         private string _assistantId;
         private AssistantType _assistantType;
@@ -81,8 +84,6 @@ namespace ChatTailorAI.Shared.ViewModels
             set => SetProperty(ref _threadId, value); 
         }
 
-        // Workaround since assistant name isnt stored in conversation
-        private string _assistantName;
         public string AssistantName
         {
             get => _assistantName;

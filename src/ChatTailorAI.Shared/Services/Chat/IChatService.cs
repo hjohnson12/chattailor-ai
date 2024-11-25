@@ -7,9 +7,4 @@ namespace ChatTailorAI.Shared.Services.Chat
     {
         Task<TResponse> GenerateChatResponseAsync(ChatRequest<TSettings, TMessage> chatRequest);
     }
-
-    //public interface IChatService
-    //{
-    //    Task<ChatResponseDto> GenerateChatResponseAsync(ChatRequestDto<ChatSettings, ChatMessage> chatRequest);
-    //}
 }

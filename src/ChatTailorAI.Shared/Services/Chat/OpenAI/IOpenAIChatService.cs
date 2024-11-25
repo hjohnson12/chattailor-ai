@@ -6,7 +6,7 @@ namespace ChatTailorAI.Shared.Services.Chat.OpenAI
 {
     public interface IOpenAIChatService : IBaseChatService
     {
-        void CancelStream();
         Task<OpenAIChatResponseDto> GenerateChatResponseAsync(OpenAIChatRequest chatRequest);
+        void CancelStream();
     }
 }

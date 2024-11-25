@@ -1,10 +1,10 @@
-﻿using ChatTailorAI.Shared.Base;
+﻿using System;
+using System.Windows.Input;
+using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Prompts;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
-using System;
-using System.Windows.Input;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs
 {

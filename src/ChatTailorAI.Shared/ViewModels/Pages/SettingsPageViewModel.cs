@@ -44,6 +44,12 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         private ObservableCollection<string> _imageCountOptions;
         private ObservableCollection<string> _imageSizeOptions;
         private ObservableCollection<string> _imageQualityOptions;
+        private string _systemMessage;
+        private string _defaultPromptId;
+        private string _promptTitle;
+        private PromptDto _selectedPrompt;
+        private bool _isFlyoutOpen;
+
 
         public SettingsPageViewModel(
             IUserSettingsService userSettingsService,
@@ -427,21 +433,18 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             set => _userSettingsService.Set(UserSettings.PresencePenalty, value);
         }
 
-        private string _systemMessage;
         public string SystemMessage
         {
             get => _systemMessage;
             set => SetProperty(ref _systemMessage, value);
         }
 
-        private string _defaultPromptId;
         public string DefaultPromptId
         {
             get => _userSettingsService.Get<string>(UserSettings.DefaultPromptId);
             set => _userSettingsService.Set(UserSettings.DefaultPromptId, value);
         }
 
-        private string _promptTitle;
         public string PromptTitle
         {
             get => _promptTitle;
@@ -457,7 +460,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             }
         }
 
-        private PromptDto _selectedPrompt;
         public PromptDto SelectedPrompt
         {
             get => _selectedPrompt;
@@ -470,7 +472,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             set => _userSettingsService.Set(UserSettings.SpeechServiceRegion, value);
         }
 
-        private bool _isFlyoutOpen;
         public bool IsFlyoutOpen
         {
             get { return _isFlyoutOpen; }

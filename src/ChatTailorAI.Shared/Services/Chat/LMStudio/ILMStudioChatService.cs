@@ -7,8 +7,8 @@ namespace ChatTailorAI.Shared.Services.Chat.LMStudio
 {
     public interface ILMStudioChatService
     {
+        Task<LMStudioChatResponseDto> GenerateChatResponseAsync(LMStudioChatRequest chatRequest);
         void CancelStream();
         Task<List<string>> GetModels();
-        Task<LMStudioChatResponseDto> GenerateChatResponseAsync(LMStudioChatRequest chatRequest);
     }
 }

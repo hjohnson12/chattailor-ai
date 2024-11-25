@@ -12,8 +12,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         private readonly INavigationService _navigationService;
         private readonly IApplicationViewService _applicationViewService;
 
-        public ICommand NavigationViewItemInvokedCommand { get; set; }
-
         public ShellPageViewModel(
             IDialogService dialogService,
             INavigationService navigationService,
@@ -27,6 +25,8 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
                new AsyncRelayCommand<string>(OnNavigationViewItemInvoked);
 
         }
+
+        public ICommand NavigationViewItemInvokedCommand { get; set; }
 
         private async Task OnNavigationViewItemInvoked(string parameter)
         {
