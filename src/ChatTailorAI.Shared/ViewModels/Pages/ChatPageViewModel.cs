@@ -221,42 +221,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             Dispose();
         }
 
-        public async Task InitializeMediaCapture()
-        {
-            await _audioService.InitializeMediaCapture();
-        }
-
-        private async Task RecordAudio()
-        {
-            try
-            {
-                if (!IsRecording && IsSpeechToTextEnabled)
-                {
-                    await _audioService.RecordAudio();
-                    IsRecording = true;
-                    return;
-                }
-
-                IsRecording = false;
-                var stream = await _audioService.StopRecordingAudio();
-                var buffer = await _whisperService.StreamToBuffer(stream);
-                var text = await _whisperService.Translate("test.mp3", buffer);
-                await SendChatRequest(text);
-            }
-            catch (Exception ex)
-            {
-                _appNotificationService.Display(ex.Message);
-            }
-        }
-
-        private void CopyMessageToPrompt(ChatMessageViewModel message)
-        {
-            if (message.Content != null)
-            {
-                UserInput = message.Content;
-            }
-        }
-
         public void Dispose()
         {
             // TODO: Check into hwo to handle going back to chat page and chat view model being disposed
@@ -275,10 +239,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             StopGeneratingResponse();
         }
 
-        public async Task<string> RequestAccessToken(string authCode)
-        {
-            return await _authenticationService.RequestSpotifyAccessToken(authCode);
-        }
 
         public string CurrentIcon
         {
@@ -334,6 +294,118 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         }
 
         public ConversationViewModel CurrentConversation { get; set; }
+
+
+        public ObservableCollection<ChatMessageViewModel> Messages
+        {
+            get => _messages;
+            set => SetProperty(ref _messages, value);
+        }
+
+        public ObservableCollection<ChatImageDto> SelectedImages
+        {
+            get => _selectedImages;
+            set => SetProperty(ref _selectedImages, value);
+        }
+        public string UserInput
+        {
+            get => _userInput;
+            set => SetProperty(ref _userInput, value);
+        }
+
+        public bool IsTyping
+        {
+            get => _isTyping;
+            set
+            {
+                SetProperty(ref _isTyping, value);
+                OnPropertyChanged(nameof(CurrentIcon));
+                OnPropertyChanged(nameof(CurrentCommand));
+            }
+        }
+
+        public bool IsStreamingEnabled
+        {
+            get => _userSettingsService.Get<bool>(UserSettings.StreamReply);
+            set => _userSettingsService.Set(UserSettings.StreamReply, value);
+        }
+
+        public bool IsSpeechToTextEnabled
+        {
+            get => _userSettingsService.Get<bool>(UserSettings.SpeechToTextEnabled);
+        }
+
+        public bool IsAuthWindowVisible
+        {
+            get => _isAuthWindowVisible;
+            set => SetProperty(ref _isAuthWindowVisible, value);
+        }
+
+        public ObservableCollection<string> Modes
+        {
+            get => _modes;
+            set
+            {
+                SetProperty(ref _modes, value);
+            }
+        }
+
+        public bool IsRecording
+        {
+            get => _isRecording;
+            set
+            {
+                SetProperty(ref _isRecording, value);
+                OnPropertyChanged(nameof(CurrentRecordIcon));
+            }
+        }
+
+        public ObservableCollection<string> AttachedImages
+        {
+            get => _attachedImages;
+            set => SetProperty(ref _attachedImages, value);
+        }
+
+        public async Task InitializeMediaCapture()
+        {
+            await _audioService.InitializeMediaCapture();
+        }
+
+        private async Task RecordAudio()
+        {
+            try
+            {
+                if (!IsRecording && IsSpeechToTextEnabled)
+                {
+                    await _audioService.RecordAudio();
+                    IsRecording = true;
+                    return;
+                }
+
+                IsRecording = false;
+                var stream = await _audioService.StopRecordingAudio();
+                var buffer = await _whisperService.StreamToBuffer(stream);
+                var text = await _whisperService.Translate("test.mp3", buffer);
+                await SendChatRequest(text);
+            }
+            catch (Exception ex)
+            {
+                _appNotificationService.Display(ex.Message);
+            }
+        }
+
+        private void CopyMessageToPrompt(ChatMessageViewModel message)
+        {
+            if (message.Content != null)
+            {
+                UserInput = message.Content;
+            }
+        }
+
+        public async Task<string> RequestAccessToken(string authCode)
+        {
+            return await _authenticationService.RequestSpotifyAccessToken(authCode);
+        }
 
         public void InitializeChat(ConversationDto conversation)
         {
@@ -463,76 +535,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         private void OnChatModeChanged(object sender, ModeChangedEventArgs e)
         {
             SelectedMode = e.Mode;
-        }
-
-        public ObservableCollection<ChatMessageViewModel> Messages
-        {
-            get => _messages;
-            set => SetProperty(ref _messages, value);
-        }
-
-        public ObservableCollection<ChatImageDto> SelectedImages
-        {
-            get => _selectedImages;
-            set => SetProperty(ref _selectedImages, value);
-        }
-        public string UserInput
-        {
-            get => _userInput;
-            set => SetProperty(ref _userInput, value);
-        }
-
-        public bool IsTyping
-        {
-            get => _isTyping;
-            set
-            {
-                SetProperty(ref _isTyping, value);
-                OnPropertyChanged(nameof(CurrentIcon));
-                OnPropertyChanged(nameof(CurrentCommand));
-            }
-        }
-
-        public bool IsStreamingEnabled
-        {
-            get => _userSettingsService.Get<bool>(UserSettings.StreamReply);
-            set => _userSettingsService.Set(UserSettings.StreamReply, value);
-        }
-
-        public bool IsSpeechToTextEnabled
-        {
-            get => _userSettingsService.Get<bool>(UserSettings.SpeechToTextEnabled);
-        }
-
-        public bool IsAuthWindowVisible
-        {
-            get => _isAuthWindowVisible;
-            set => SetProperty(ref _isAuthWindowVisible, value);
-        }
-
-        public ObservableCollection<string> Modes
-        {
-            get => _modes;
-            set
-            {
-                SetProperty(ref _modes, value);
-            }
-        }
-
-        public bool IsRecording
-        {
-            get => _isRecording;
-            set
-            {
-                SetProperty(ref _isRecording, value);
-                OnPropertyChanged(nameof(CurrentRecordIcon));
-            }
-        }
-
-        public ObservableCollection<string> AttachedImages
-        {
-            get => _attachedImages;
-            set => SetProperty(ref _attachedImages, value);
         }
 
         private void OnUserSettingChanged(object sender, string e)
