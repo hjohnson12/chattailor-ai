@@ -26,8 +26,8 @@ namespace ChatTailorAI.Services.Speech
 
     public class ElevenLabsSpeechService : IElevenLabsSpeechService
     {
-        private IAppSettingsService _appSettingsService;
-        private IUserSettingsService _userSettingsService;
+        private readonly IAppSettingsService _appSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private static HttpClient _httpClient;
         private readonly string[] models;
         private readonly string[] voices;
