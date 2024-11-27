@@ -67,7 +67,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         private readonly IChatMessageViewModelFactory _chatMessageViewModelFactory;
         private readonly IAuthenticationService _authenticationService;
         private readonly ISpeechService _speechService;
-        private readonly IImageGenerationService _imageGenerationService;
+        private readonly IImageService _imageService;
         private readonly IChatMessageTransformerFactory _chatMessageTransformerFactory;
         private readonly IChatMessageViewModelMapper _chatMessageViewModelMapper;
         private readonly IChatRequestBuilderFactory _chatRequestBuilderFactory;
@@ -130,7 +130,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             IChatMessageViewModelFactory chatMessageViewModelFactory,
             IAuthenticationService authenticationService,
             ISpeechService SpeechService,
-            IImageGenerationService imageGenerationService,
+            IImageService imageService,
             IChatMessageTransformerFactory chatMessageTransformerFactory,
             IChatMessageViewModelMapper chatMessageViewModelMapper,
             IChatRequestBuilderFactory chatRequestBuilderFactory,
@@ -163,7 +163,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             _chatMessageViewModelFactory = chatMessageViewModelFactory;
             _authenticationService = authenticationService;
             _speechService = SpeechService;
-            _imageGenerationService = imageGenerationService;
+            _imageService = imageService;
             _chatMessageTransformerFactory = chatMessageTransformerFactory;
             _chatMessageViewModelMapper = chatMessageViewModelMapper;
             _chatRequestBuilderFactory = chatRequestBuilderFactory;
@@ -1040,7 +1040,7 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             // if images exist in the list of messages default to a vision model
             try
             {
-                var imageGenerationResponse = await _imageGenerationService.GenerateImagesAsync(imagePromptDto);
+                var imageGenerationResponse = await _imageService.GenerateImagesAsync(imagePromptDto);
                 var savedImages = await _imageFileService.SaveImagesAsync(imageGenerationResponse.ImageUrls);
                 var imageDtos = savedImages.Select(image => new ChatImageDto
                 {

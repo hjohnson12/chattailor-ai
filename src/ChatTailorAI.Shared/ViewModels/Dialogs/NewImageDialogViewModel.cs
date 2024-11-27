@@ -19,8 +19,7 @@ namespace ChatTailorAI.Shared.ViewModels.Dialogs
     {
         private readonly IAppNotificationService _appNotificationService;
         private readonly IUserSettingsService _userSettingsService;
-        private readonly IDalleImageService _dalleImageService;
-        private readonly IImageGenerationService _imageGenerationService;
+        private readonly IImageService _imageService;
         private readonly IEventAggregator _eventAggregator;
 
         private bool _isGenerating;
@@ -33,15 +32,13 @@ namespace ChatTailorAI.Shared.ViewModels.Dialogs
 
         public NewImageDialogViewModel(
             IAppNotificationService appNotificationService,
-            IDalleImageService dalleImageService,
             IUserSettingsService userSettingsService,
-            IImageGenerationService imageGenerationService,
+            IImageService imageService,
             IEventAggregator eventAggregator)
         {
             _appNotificationService = appNotificationService;
-            _dalleImageService = dalleImageService;
             _userSettingsService = userSettingsService;
-            _imageGenerationService = imageGenerationService;
+            _imageService = imageService;
             _eventAggregator = eventAggregator;
 
             IsGenerating = false;
@@ -136,7 +133,7 @@ namespace ChatTailorAI.Shared.ViewModels.Dialogs
 
             try
             {
-                var imageGenerationResponse = await _imageGenerationService.GenerateImagesAsync(imagePromptDto);
+                var imageGenerationResponse = await _imageService.GenerateImagesAsync(imagePromptDto);
 
                 // TODO: Publish here or save to dob here? 
                 _eventAggregator.PublishImageGenerated(new ImageGeneratedEvent { 

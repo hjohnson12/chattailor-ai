@@ -15,7 +15,7 @@ namespace ChatTailorAI.Services.Speech
 {
     public class AzureSpeechService : IAzureSpeechService
     {
-        private IUserSettingsService _userSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private readonly string[] models;
         private string _voiceName;
 
@@ -26,7 +26,6 @@ namespace ChatTailorAI.Services.Speech
 
             _voiceName = _userSettingsService.Get<string>(UserSettings.VoiceName);
             models = new string[] { "default" };
-
         }
 
         public string ServiceRegion
@@ -72,6 +71,7 @@ namespace ChatTailorAI.Services.Speech
                     { "Ocp-Apim-Subscription-Key", azureSpeechApiKey },
                 },
             };
+
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();

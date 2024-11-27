@@ -13,20 +13,20 @@ using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Image;
 
-namespace ChatTailorAI.Services.Image
+namespace ChatTailorAI.Services.Image.OpenAI
 {
-    public class DalleImageService : IDalleImageService
+    public class OpenAIDalleImageService : IImageGenerationService
     {
         private static HttpClient _httpClient;
         private readonly IAppSettingsService _appSettingsService;
-        private IUserSettingsService _userSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private readonly IEventAggregator _eventAggregator;
-        private string[] models;
-        private Dictionary<string, List<string>> modelImageSizes;
+        private readonly string[] models;
+        private readonly Dictionary<string, List<string>> modelImageSizes;
 
         private readonly string dalleBaseUrl = "https://api.openai.com/";
 
-        public DalleImageService(
+        public OpenAIDalleImageService(
             IAppSettingsService appSettingsService,
             IUserSettingsService userSettingsService,
             IEventAggregator eventAggregator,

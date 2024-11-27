@@ -62,6 +62,7 @@ using ChatTailorAI.Uwp.Services.UI.Navigation;
 using ChatTailorAI.Services.Uwp.UI.Navigation;
 using ChatTailorAI.Uwp.Services.UI.Dialogs;
 using ChatTailorAI.Services.Uwp.UI.Views;
+using ChatTailorAI.Services.Image.OpenAI;
 
 namespace ChatTailorAI.Uwp.Services.Configuration
 {
@@ -155,7 +156,8 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddHttpClient<IAnthropicChatService, AnthropicChatService>();
             services.AddHttpClient<IGoogleChatService, GoogleChatService>();
             services.AddHttpClient<ILMStudioChatService, LMStudioChatService>();
-            services.AddHttpClient<IDalleImageService, DalleImageService>();
+            services.AddHttpClient<IImageGenerationService, OpenAIDalleImageService>();
+            services.AddSingleton<IImageService, ImageService>();
             services.AddSingleton<IAzureSpeechService, AzureSpeechService>();
             services.AddHttpClient<IOpenAISpeechService, OpenAISpeechService>();
             services.AddHttpClient<IElevenLabsSpeechService, ElevenLabsSpeechService>();
@@ -173,7 +175,6 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddSingleton<IToolExecutorService, FunctionToolExecutorService>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<ISpeechService, SpeechService>();
-            services.AddSingleton<IImageGenerationService, ImageGenerationService>();
             services.AddSingleton<IApplicationViewService, ApplicationViewService>();
             services.AddSingleton<IModelManagerService, ModelManagerService>();
 
