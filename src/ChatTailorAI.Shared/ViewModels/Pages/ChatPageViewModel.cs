@@ -40,6 +40,7 @@ using ChatTailorAI.Shared.Resources;
 using ChatTailorAI.Shared.Dto.Chat.LMStudio;
 using ChatTailorAI.Shared.Models.Chat.LMStudio;
 using ChatTailorAI.Shared.Services.Chat.LMStudio;
+using ChatTailorAI.Shared.Services.Audio;
 
 namespace ChatTailorAI.Shared.ViewModels.Pages
 {

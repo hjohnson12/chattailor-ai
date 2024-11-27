@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
 using ChatTailorAI.Shared.Enums;
-using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Uwp.Services.UI.Navigation
 {

@@ -4,6 +4,7 @@ using ChatTailorAI.Shared.Enums;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Prompts;
 using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 using ChatTailorAI.Shared.Services.DataServices;
 using ChatTailorAI.Shared.Services.Events;
 using CommunityToolkit.Mvvm.Input;

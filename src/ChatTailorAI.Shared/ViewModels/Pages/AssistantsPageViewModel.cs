@@ -13,6 +13,7 @@ using ChatTailorAI.Shared.Services.Assistants.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.DataServices;
 using ChatTailorAI.Shared.Services.Events;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Shared.ViewModels.Pages
 {

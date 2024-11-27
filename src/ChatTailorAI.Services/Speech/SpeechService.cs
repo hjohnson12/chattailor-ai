@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Services.Audio;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Speech;
 

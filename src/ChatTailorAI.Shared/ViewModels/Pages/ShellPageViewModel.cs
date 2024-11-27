@@ -1,5 +1,6 @@
 ﻿using ChatTailorAI.Shared.Enums;
 using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 using CommunityToolkit.Mvvm.Input;
 using System.Threading.Tasks;
 using System.Windows.Input;

@@ -63,6 +63,8 @@ using ChatTailorAI.Services.Uwp.UI.Navigation;
 using ChatTailorAI.Uwp.Services.UI.Dialogs;
 using ChatTailorAI.Services.Uwp.UI.Views;
 using ChatTailorAI.Services.Image.OpenAI;
+using ChatTailorAI.Shared.Services.Audio;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Uwp.Services.Configuration
 {

@@ -18,6 +18,7 @@ using ChatTailorAI.Shared.Services.Chat.LMStudio;
 using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Models.Shared;
 using ChatTailorAI.Shared.Events;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Shared.ViewModels.Pages
 {

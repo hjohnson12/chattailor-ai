@@ -1,4 +1,4 @@
-﻿using ChatTailorAI.Shared.Services.Common;
+﻿using ChatTailorAI.Shared.Services.Common.Navigation;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.ViewModels.Pages;
 using Microsoft.Extensions.DependencyInjection;

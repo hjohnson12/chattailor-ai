@@ -12,6 +12,7 @@ using ChatTailorAI.Shared.Resources;
 using ChatTailorAI.Shared.Services.Assistants.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.DataServices;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs
 {

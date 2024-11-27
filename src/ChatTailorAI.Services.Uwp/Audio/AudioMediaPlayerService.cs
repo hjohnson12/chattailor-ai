@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.Storage.Streams;
-using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Audio;
 
 namespace ChatTailorAI.Services.Uwp.Audio
 {

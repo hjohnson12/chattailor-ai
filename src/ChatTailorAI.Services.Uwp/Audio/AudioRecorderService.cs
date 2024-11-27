@@ -6,7 +6,7 @@ using Windows.Media.Capture;
 using Windows.Media.Devices;
 using Windows.Media.MediaProperties;
 using Windows.Storage.Streams;
-using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Audio;
 
 namespace ChatTailorAI.Services.Uwp.Audio
 {
