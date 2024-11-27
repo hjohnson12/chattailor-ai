@@ -1,4 +1,5 @@
 ﻿using System;
+using ChatTailorAI.Shared.Factories.Interfaces;
 using ChatTailorAI.Shared.Models.Chat;
 using ChatTailorAI.Shared.Models.Chat.Anthropic;
 using ChatTailorAI.Shared.Models.Chat.Google;
@@ -9,12 +10,6 @@ using ChatTailorAI.Shared.Services.Common;
 
 namespace ChatTailorAI.Shared.Factories
 {
-    public interface IChatSettingsFactory
-    {
-        ChatSettings CreateChatSettings(string chatServiceType);
-        OpenAIChatSettings CreateOpenAIChatSettings();
-    }
-    
     public class ChatSettingsFactory : IChatSettingsFactory
     {
         private readonly IUserSettingsService _userSettingsService;

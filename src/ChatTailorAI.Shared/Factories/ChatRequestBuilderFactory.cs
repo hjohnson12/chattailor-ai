@@ -1,6 +1,6 @@
-﻿using ChatTailorAI.Shared.Builders;
+﻿using System;
+using ChatTailorAI.Shared.Builders;
 using ChatTailorAI.Shared.Factories.Interfaces;
-using System;
 
 namespace ChatTailorAI.Shared.Factories
 {

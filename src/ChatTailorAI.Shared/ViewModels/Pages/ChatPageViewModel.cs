@@ -27,7 +27,6 @@ using ChatTailorAI.Shared.Services.Authentication;
 using ChatTailorAI.Shared.Models.Chat;
 using ChatTailorAI.Shared.Services.Files;
 using ChatTailorAI.Shared.Dto.Conversations.OpenAI;
-using ChatTailorAI.Shared.Factories;
 using ChatTailorAI.Shared.Factories.Interfaces;
 using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Shared.Events;
