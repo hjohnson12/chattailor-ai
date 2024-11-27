@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using ChatTailorAI.Shared.Models.Audio;
 
-namespace ChatTailorAI.Shared.Services.Common
+namespace ChatTailorAI.Shared.Services.Tools
 {
     public interface ISpotifyService
     {

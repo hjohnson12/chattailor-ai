@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 //using Windows.Security.Authentication.Web; // Broker not working in UWP
 using ChatTailorAI.Shared.Models.Audio;
 using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Tools;
 
 namespace ChatTailorAI.Services.Tools
 {

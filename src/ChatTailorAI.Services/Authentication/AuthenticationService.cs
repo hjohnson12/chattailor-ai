@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Services.Authentication;
-using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
+using ChatTailorAI.Shared.Services.Tools;
 
 namespace ChatTailorAI.Services.Authentication
 {
