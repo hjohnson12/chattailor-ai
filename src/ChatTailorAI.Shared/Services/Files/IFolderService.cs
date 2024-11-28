@@ -1,25 +1,25 @@
 ﻿using System.Threading.Tasks;
-using Windows.Storage;
 
-namespace ChatTailorAI.Services.Uwp.FileManagement
+namespace ChatTailorAI.Shared.Services.Files
 {
     /// <summary>
     /// Interface for a service for picking and creating folders
     /// </summary>
-    public interface IFolderService
+    /// <typeparam name="TFolder">The type of folder used by the service.</typeparam>
+    public interface IFolderService<TFolder>
     {
         /// <summary>
         /// Opens the folder picker and returns the chosen folder.
         /// </summary>
-        /// <returns>Chosen storage folder.</returns>
-        Task<StorageFolder> OpenFolderPickerAsync();
+        /// <returns>Chosen folder.</returns>
+        Task<TFolder> OpenFolderPickerAsync();
 
         /// <summary>
         /// Creates a new folder with its name passed as an argument inside a specified folder.
         /// </summary>
         /// <param name="folder">Folder to create a new folder in.</param>
-        /// <param name="folderName">New folders name.</param>
-        /// <returns></returns>
-        Task<StorageFolder> CreateFolderByNameAsync(StorageFolder folder, string folderName);
+        /// <param name="folderName">New folder's name.</param>
+        /// <returns>The created folder.</returns>
+        Task<TFolder> CreateFolderByNameAsync(TFolder folder, string folderName);
     }
 }

@@ -65,6 +65,7 @@ using ChatTailorAI.Services.Uwp.UI.Views;
 using ChatTailorAI.Services.Image.OpenAI;
 using ChatTailorAI.Shared.Services.Audio;
 using ChatTailorAI.Shared.Services.Common.Navigation;
+using Windows.Storage;
 
 namespace ChatTailorAI.Uwp.Services.Configuration
 {
@@ -150,7 +151,7 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddSingleton<IFileDownloadService, FileDownloadService>();
             services.AddSingleton<IImageFileService, ImageFileService>();
             services.AddSingleton<IFileService, FileService>();
-            services.AddSingleton<IFolderService, FolderService>();
+            services.AddSingleton<IFolderService<StorageFolder>, FolderService>();
             services.AddSingleton<IDialogService, DialogService>();
             services.AddHttpClient<IFileDownloadService, FileDownloadService>();
             services.AddSingleton<IChatFileService, ChatFileService>();

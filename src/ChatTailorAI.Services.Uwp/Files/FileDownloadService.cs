@@ -16,9 +16,9 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
     public class FileDownloadService : IFileDownloadService
     {
         private readonly HttpClient _httpClient;
-        private readonly IFolderService _folderService;
+        private readonly IFolderService<StorageFolder> _folderService;
 
-        public FileDownloadService(HttpClient client, IFolderService folderService)
+        public FileDownloadService(HttpClient client, IFolderService<StorageFolder> folderService)
         {
             _folderService = folderService;
             _httpClient = client;
