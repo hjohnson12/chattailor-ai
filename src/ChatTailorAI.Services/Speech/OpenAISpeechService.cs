@@ -1,23 +1,23 @@
-﻿using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Speech;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ChatTailorAI.Shared.Models.Settings;
+using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Speech;
 
 namespace ChatTailorAI.Services.Speech
 {
     public class OpenAISpeechService : IOpenAISpeechService
     {
-        private IAppSettingsService _appSettingsService;
-        private IUserSettingsService _userSettingsService;
+        private readonly IAppSettingsService _appSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private static HttpClient _httpClient;
-        private string[] models;
-        private string[] voices;
+        private readonly string[] models;
+        private readonly string[] voices;
 
         private readonly string openAISpeechApiUrl = "https://api.openai.com/";
 

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 using System.Threading.Tasks;
 
-namespace ChatTailorAI.Shared.Services.Common
+namespace ChatTailorAI.Shared.Services.Audio
 {
     public interface IAudioRecorderService
     {

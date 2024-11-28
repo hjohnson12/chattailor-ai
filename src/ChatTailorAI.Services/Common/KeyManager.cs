@@ -1,8 +1,8 @@
-﻿using ChatTailorAI.Shared.Events;
+﻿using System.Collections.Generic;
+using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
-using System.Collections.Generic;
 
 namespace ChatTailorAI.Services.Common
 {

@@ -1,7 +1,5 @@
-﻿using ChatTailorAI.Shared.Models.Chat.LMStudio;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using ChatTailorAI.Shared.Models.Chat.LMStudio;
 
 namespace ChatTailorAI.Shared.Dto.Chat.LMStudio
 {

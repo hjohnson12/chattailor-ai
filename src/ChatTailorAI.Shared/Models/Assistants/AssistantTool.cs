@@ -1,7 +1,4 @@
 ﻿using ChatTailorAI.Shared.Models.Tools;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Models.Assistants
 {

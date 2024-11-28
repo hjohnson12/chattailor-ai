@@ -1,9 +1,7 @@
 ﻿using ChatTailorAI.Shared.Enums;
 using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -14,8 +12,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         private readonly IDialogService _dialogService;
         private readonly INavigationService _navigationService;
         private readonly IApplicationViewService _applicationViewService;
-
-        public ICommand NavigationViewItemInvokedCommand { get; set; }
 
         public ShellPageViewModel(
             IDialogService dialogService,
@@ -30,6 +26,8 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
                new AsyncRelayCommand<string>(OnNavigationViewItemInvoked);
 
         }
+
+        public ICommand NavigationViewItemInvokedCommand { get; set; }
 
         private async Task OnNavigationViewItemInvoked(string parameter)
         {

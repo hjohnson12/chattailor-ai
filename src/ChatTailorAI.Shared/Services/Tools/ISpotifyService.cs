@@ -1,10 +1,8 @@
-﻿using ChatTailorAI.Shared.Models.Audio;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Models.Audio;
 
-namespace ChatTailorAI.Shared.Services.Common
+namespace ChatTailorAI.Shared.Services.Tools
 {
     public interface ISpotifyService
     {

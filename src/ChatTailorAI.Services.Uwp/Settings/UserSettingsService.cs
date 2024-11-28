@@ -1,8 +1,8 @@
 ﻿using System;
-using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Common;
 using Newtonsoft.Json;
 using Windows.Storage;
+using ChatTailorAI.Shared.Models.Settings;
+using ChatTailorAI.Shared.Services.Common;
 
 namespace ChatTailorAI.Services.Uwp.Settings
 {

@@ -1,22 +1,15 @@
-﻿using ChatTailorAI.Shared.Models.Chat;
+﻿using System;
+using ChatTailorAI.Shared.Factories.Interfaces;
+using ChatTailorAI.Shared.Models.Chat;
 using ChatTailorAI.Shared.Models.Chat.Anthropic;
 using ChatTailorAI.Shared.Models.Chat.Google;
 using ChatTailorAI.Shared.Models.Chat.LMStudio;
 using ChatTailorAI.Shared.Models.Chat.OpenAI;
 using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Factories
 {
-    public interface IChatSettingsFactory
-    {
-        ChatSettings CreateChatSettings(string chatServiceType);
-        OpenAIChatSettings CreateOpenAIChatSettings();
-    }
-    
     public class ChatSettingsFactory : IChatSettingsFactory
     {
         private readonly IUserSettingsService _userSettingsService;

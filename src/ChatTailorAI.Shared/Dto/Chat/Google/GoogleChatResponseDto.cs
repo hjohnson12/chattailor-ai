@@ -1,9 +1,4 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Dto.Chat.Google
+﻿namespace ChatTailorAI.Shared.Dto.Chat.Google
 {
     public class GoogleChatResponseDto : ChatResponseDto
     {

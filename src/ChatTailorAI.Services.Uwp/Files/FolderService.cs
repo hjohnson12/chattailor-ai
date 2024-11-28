@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage.Pickers;
 using Windows.Storage;
+using ChatTailorAI.Shared.Services.Files;
 
 namespace ChatTailorAI.Services.Uwp.FileManagement
 {
     /// <summary>
     /// A class for picking and creating folders
     /// </summary>
-    public class FolderService : IFolderService
+    public class FolderService : IFolderService<StorageFolder>
     {
         /// <summary>
         /// Opens the folder picker and returns the chosen folder.

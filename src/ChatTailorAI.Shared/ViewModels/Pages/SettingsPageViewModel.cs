@@ -18,6 +18,7 @@ using ChatTailorAI.Shared.Services.Chat.LMStudio;
 using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Models.Shared;
 using ChatTailorAI.Shared.Events;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Shared.ViewModels.Pages
 {
@@ -44,6 +45,12 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         private ObservableCollection<string> _imageCountOptions;
         private ObservableCollection<string> _imageSizeOptions;
         private ObservableCollection<string> _imageQualityOptions;
+        private string _systemMessage;
+        private string _defaultPromptId;
+        private string _promptTitle;
+        private PromptDto _selectedPrompt;
+        private bool _isFlyoutOpen;
+
 
         public SettingsPageViewModel(
             IUserSettingsService userSettingsService,
@@ -166,236 +173,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
         public ICommand ClearPromptCommand { get; }
         public ICommand SetSelectedPromptCommand { get; }
 
-        private async void OnSelectedSpeechProviderChanged(object sender, PropertyChangedEventArgs e)
-        {
-            if (e.PropertyName == nameof(SelectedSpeechProvider))
-            {
-                await LoadVoicesAsync();
-                await LoadSpeechModelsAsync();
-            }
-        }
-
-        private void SetSelectedPrompt()
-        {
-            if (SelectedPrompt == null) return;
-
-            DefaultPromptId = SelectedPrompt.Id;
-            SystemMessage = SelectedPrompt.Content;
-            PromptTitle = SelectedPrompt.Title;
-
-            // Doesn't use SetProperty in the setter currently
-            OnPropertyChanged(nameof(SystemMessage));
-            OnPropertyChanged(nameof(PromptTitle));
-        }
-
-        private void ClearPrompt()
-        {
-            _userSettingsService.Set<string>(UserSettings.DefaultPromptId, null);
-            SystemMessage = null;
-            PromptTitle = null;
-
-            // Doesn't use SetProperty in the setter currently
-            OnPropertyChanged(nameof(SystemMessage));
-            OnPropertyChanged(nameof(PromptTitle));
-        }
-
-        public async Task DeletePrompts()
-        {
-            if (Prompts == null) return;
-
-            await _fileService.DeletePromptsAsync();
-            Prompts.Clear();
-        }
-
-        public async Task DeletePrompt()
-        {
-            IsFlyoutOpen = false;
-
-            if (SelectedPrompt == null) return;
-
-            var prompts = Prompts.ToList();
-            int indexToDelete = prompts.FindIndex(p => Convert.ToInt32(p.Id) == Convert.ToInt32(SelectedPrompt.Id));
-
-            if (indexToDelete != -1)
-            {
-                prompts.RemoveAt(indexToDelete);
-
-                for (int i = indexToDelete; i < prompts.Count; i++)
-                {
-                    var id = Convert.ToInt32(prompts[i].Id);
-                    prompts[i].Id = id--.ToString();
-                }
-
-                await _fileService.UpdatePromptsAsync(prompts);
-                Prompts = new ObservableCollection<PromptDto>(prompts);
-            }
-        }
-
-        public async Task LoadPromptsAsync()
-        {
-            try
-            {
-                var promptsFromDb = await _promptDataService.GetAllAsync();
-
-                List<PromptDto> prompts = promptsFromDb
-                    .Where(p => p.PromptType == PromptType.Standard)
-                    .OrderByDescending(p => p.CreatedAt)
-                    .ToList();
-                
-                Prompts = new ObservableCollection<PromptDto>(prompts);
-
-                // Load default prompt info
-                var defaultPromptId = _userSettingsService.Get<string>(UserSettings.DefaultPromptId);
-                if (!string.IsNullOrEmpty(defaultPromptId))
-                {
-                    var defaultPrompt = prompts.FirstOrDefault(p => p.Id == defaultPromptId);
-                    if (defaultPrompt != null)
-                    {
-                        SystemMessage = defaultPrompt.Content;
-                        PromptTitle = defaultPrompt.Title;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                _loggerService.Error(ex, "Error loading prompts");
-                _appNotificationService.Display($"Error loading prompts: {ex.Message}");
-            }
-        }
-
-        public async Task SavePrompt()
-        {
-            if (SystemMessage != string.Empty &&
-                SystemMessage != null)
-            {
-                var newPrompt = new PromptDto
-                {
-                    Content = SystemMessage,
-                    Id = Guid.NewGuid().ToString(),
-                    Title = PromptTitle,
-                    PromptType = PromptType.Standard,
-                    IsActive = false // TODO
-                };
-                Prompts.Add(newPrompt);
-
-                await _fileService.AppendPromptToFileAsync(newPrompt);
-                //var promptsList = Prompts.ToList();
-                //await _fileService.UpdatePromptsFlieAsync(promptsList);
-            }
-        }
-
-        private void GetSelectedItems()
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task LoadVoicesAsync()
-        {
-            try
-            {
-                List<string> voiceNames = new List<string>();
-                var selectedSpeechProvider = _userSettingsService.Get<string>(UserSettings.SpeechProvider);
-                switch (selectedSpeechProvider)
-                {
-                    case "azure":
-                        if (AzureSpeechApiKey != null && AzureSpeechApiKey != string.Empty && SpeechServiceRegion != string.Empty)
-                        {
-                            break;
-                        }
-                        voiceNames = await _azureSpeechService.GetVoicesListAsync();
-                        break;
-                    case "openai":
-                        voiceNames = await _openAISpeechService.GetVoicesListAsync();
-                        break;
-                    case "elevenlabs":
-                        voiceNames = await _elevenLabsSpeechService.GetVoiceNamesAsync();
-                        break;
-                    default:
-                        break;
-                }
-
-                VoiceNames = new ObservableCollection<string>(voiceNames);
-                OnPropertyChanged(nameof(SelectedVoiceName));
-            }
-            catch (Exception ex)
-            {
-                _loggerService.Error(ex, "Error loading voices, starting with empty collection...");
-                VoiceNames = new ObservableCollection<string>();
-            }
-
-        }
-
-        public async Task LoadModelsAsync()
-        {
-            // TODO: Eventually update how this is done
-            // SelectedModel gets set to null when the models are refreshed
-            try
-            {
-                string previousSelectedModel = SelectedModel;
-
-                await _modelManagerService.RefreshDynamicModelsAsync();
-
-                var newModels = new ObservableCollection<string>();
-                foreach (var model in _modelManagerService.GetAllModels())
-                {
-                    newModels.Add(model);
-                }
-
-                Models = new ObservableCollection<string>(newModels);
-
-                // Attempt to restore the previous selection
-                if (newModels.Contains(previousSelectedModel))
-                {
-                    SelectedModel = previousSelectedModel;
-                }
-                else if (Models.Any())
-                {
-                    SelectedModel = "gpt-4o";
-                }
-
-                OnPropertyChanged(nameof(SelectedModel));
-            }
-            catch (Exception ex)
-            {
-                _loggerService.Error(ex, "Error loading models, starting with default collection...");
-                Models = new ObservableCollection<string>();
-            }
-        }
-
-        public async Task LoadSpeechModelsAsync()
-        {
-            try
-            {
-                List<string> speechModels = new List<string>();
-                var selectedSpeechProvider = _userSettingsService.Get<string>(UserSettings.SpeechProvider);
-                switch (selectedSpeechProvider)
-                {
-                    case "azure":
-                        if (AzureSpeechApiKey != null && AzureSpeechApiKey != string.Empty && SpeechServiceRegion != string.Empty)
-                        {
-                            break;
-                        }
-                        speechModels = await _azureSpeechService.GetModelsListAsync();
-                        break;
-                    case "openai":
-                        speechModels = await _openAISpeechService.GetModelsListAsync();
-                        break;
-                    case "elevenlabs":
-                        speechModels = await _elevenLabsSpeechService.GetModelsListAsync();
-                        break;
-                    default:
-                        break;
-                }
-
-                SpeechModels = new ObservableCollection<string>(speechModels);
-                OnPropertyChanged(nameof(SelectedSpeechModel));
-            }
-            catch (Exception ex)
-            {
-                _loggerService.Error(ex, "Error loading speech models, starting with empty collection...");
-                SpeechModels = new ObservableCollection<string>();
-            }
-        }
 
         private ObservableCollection<FunctionListGroupInfo> _groupInfoCollection;
         public ObservableCollection<FunctionListGroupInfo> GroupInfoCollection
@@ -657,21 +434,18 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             set => _userSettingsService.Set(UserSettings.PresencePenalty, value);
         }
 
-        private string _systemMessage;
         public string SystemMessage
         {
             get => _systemMessage;
             set => SetProperty(ref _systemMessage, value);
         }
 
-        private string _defaultPromptId;
         public string DefaultPromptId
         {
             get => _userSettingsService.Get<string>(UserSettings.DefaultPromptId);
             set => _userSettingsService.Set(UserSettings.DefaultPromptId, value);
         }
 
-        private string _promptTitle;
         public string PromptTitle
         {
             get => _promptTitle;
@@ -687,7 +461,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             }
         }
 
-        private PromptDto _selectedPrompt;
         public PromptDto SelectedPrompt
         {
             get => _selectedPrompt;
@@ -700,11 +473,241 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             set => _userSettingsService.Set(UserSettings.SpeechServiceRegion, value);
         }
 
-        private bool _isFlyoutOpen;
         public bool IsFlyoutOpen
         {
             get { return _isFlyoutOpen; }
             set => SetProperty(ref _isFlyoutOpen, value);
+        }
+
+        private async void OnSelectedSpeechProviderChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(SelectedSpeechProvider))
+            {
+                await LoadVoicesAsync();
+                await LoadSpeechModelsAsync();
+            }
+        }
+
+        private void SetSelectedPrompt()
+        {
+            if (SelectedPrompt == null) return;
+
+            DefaultPromptId = SelectedPrompt.Id;
+            SystemMessage = SelectedPrompt.Content;
+            PromptTitle = SelectedPrompt.Title;
+
+            // Doesn't use SetProperty in the setter currently
+            OnPropertyChanged(nameof(SystemMessage));
+            OnPropertyChanged(nameof(PromptTitle));
+        }
+
+        private void ClearPrompt()
+        {
+            _userSettingsService.Set<string>(UserSettings.DefaultPromptId, null);
+            SystemMessage = null;
+            PromptTitle = null;
+
+            // Doesn't use SetProperty in the setter currently
+            OnPropertyChanged(nameof(SystemMessage));
+            OnPropertyChanged(nameof(PromptTitle));
+        }
+
+        public async Task DeletePrompts()
+        {
+            if (Prompts == null) return;
+
+            await _fileService.DeletePromptsAsync();
+            Prompts.Clear();
+        }
+
+        public async Task DeletePrompt()
+        {
+            IsFlyoutOpen = false;
+
+            if (SelectedPrompt == null) return;
+
+            var prompts = Prompts.ToList();
+            int indexToDelete = prompts.FindIndex(p => Convert.ToInt32(p.Id) == Convert.ToInt32(SelectedPrompt.Id));
+
+            if (indexToDelete != -1)
+            {
+                prompts.RemoveAt(indexToDelete);
+
+                for (int i = indexToDelete; i < prompts.Count; i++)
+                {
+                    var id = Convert.ToInt32(prompts[i].Id);
+                    prompts[i].Id = id--.ToString();
+                }
+
+                await _fileService.UpdatePromptsAsync(prompts);
+                Prompts = new ObservableCollection<PromptDto>(prompts);
+            }
+        }
+
+        public async Task LoadPromptsAsync()
+        {
+            try
+            {
+                var promptsFromDb = await _promptDataService.GetAllAsync();
+
+                List<PromptDto> prompts = promptsFromDb
+                    .Where(p => p.PromptType == PromptType.Standard)
+                    .OrderByDescending(p => p.CreatedAt)
+                    .ToList();
+                
+                Prompts = new ObservableCollection<PromptDto>(prompts);
+
+                // Load default prompt info
+                var defaultPromptId = _userSettingsService.Get<string>(UserSettings.DefaultPromptId);
+                if (!string.IsNullOrEmpty(defaultPromptId))
+                {
+                    var defaultPrompt = prompts.FirstOrDefault(p => p.Id == defaultPromptId);
+                    if (defaultPrompt != null)
+                    {
+                        SystemMessage = defaultPrompt.Content;
+                        PromptTitle = defaultPrompt.Title;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _loggerService.Error(ex, "Error loading prompts");
+                _appNotificationService.Display($"Error loading prompts: {ex.Message}");
+            }
+        }
+
+        public async Task SavePrompt()
+        {
+            if (SystemMessage != string.Empty &&
+                SystemMessage != null)
+            {
+                var newPrompt = new PromptDto
+                {
+                    Content = SystemMessage,
+                    Id = Guid.NewGuid().ToString(),
+                    Title = PromptTitle,
+                    PromptType = PromptType.Standard,
+                    IsActive = false // TODO
+                };
+                Prompts.Add(newPrompt);
+
+                await _fileService.AppendPromptToFileAsync(newPrompt);
+                //var promptsList = Prompts.ToList();
+                //await _fileService.UpdatePromptsFlieAsync(promptsList);
+            }
+        }
+
+        private void GetSelectedItems()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task LoadVoicesAsync()
+        {
+            try
+            {
+                List<string> voiceNames = new List<string>();
+                var selectedSpeechProvider = _userSettingsService.Get<string>(UserSettings.SpeechProvider);
+                switch (selectedSpeechProvider)
+                {
+                    case "azure":
+                        if (AzureSpeechApiKey != null && AzureSpeechApiKey != string.Empty && SpeechServiceRegion != string.Empty)
+                        {
+                            break;
+                        }
+                        voiceNames = await _azureSpeechService.GetVoicesListAsync();
+                        break;
+                    case "openai":
+                        voiceNames = await _openAISpeechService.GetVoicesListAsync();
+                        break;
+                    case "elevenlabs":
+                        voiceNames = await _elevenLabsSpeechService.GetVoiceNamesAsync();
+                        break;
+                    default:
+                        break;
+                }
+
+                VoiceNames = new ObservableCollection<string>(voiceNames);
+                OnPropertyChanged(nameof(SelectedVoiceName));
+            }
+            catch (Exception ex)
+            {
+                _loggerService.Error(ex, "Error loading voices, starting with empty collection...");
+                VoiceNames = new ObservableCollection<string>();
+            }
+
+        }
+
+        public async Task LoadModelsAsync()
+        {
+            // TODO: Eventually update how this is done
+            // SelectedModel gets set to null when the models are refreshed
+            try
+            {
+                string previousSelectedModel = SelectedModel;
+
+                await _modelManagerService.RefreshDynamicModelsAsync();
+
+                var newModels = new ObservableCollection<string>();
+                foreach (var model in _modelManagerService.GetAllModels())
+                {
+                    newModels.Add(model);
+                }
+
+                Models = new ObservableCollection<string>(newModels);
+
+                // Attempt to restore the previous selection
+                if (newModels.Contains(previousSelectedModel))
+                {
+                    SelectedModel = previousSelectedModel;
+                }
+                else if (Models.Any())
+                {
+                    SelectedModel = "gpt-4o";
+                }
+
+                OnPropertyChanged(nameof(SelectedModel));
+            }
+            catch (Exception ex)
+            {
+                _loggerService.Error(ex, "Error loading models, starting with default collection...");
+                Models = new ObservableCollection<string>();
+            }
+        }
+
+        public async Task LoadSpeechModelsAsync()
+        {
+            try
+            {
+                List<string> speechModels = new List<string>();
+                var selectedSpeechProvider = _userSettingsService.Get<string>(UserSettings.SpeechProvider);
+                switch (selectedSpeechProvider)
+                {
+                    case "azure":
+                        if (AzureSpeechApiKey != null && AzureSpeechApiKey != string.Empty && SpeechServiceRegion != string.Empty)
+                        {
+                            break;
+                        }
+                        speechModels = await _azureSpeechService.GetModelsListAsync();
+                        break;
+                    case "openai":
+                        speechModels = await _openAISpeechService.GetModelsListAsync();
+                        break;
+                    case "elevenlabs":
+                        speechModels = await _elevenLabsSpeechService.GetModelsListAsync();
+                        break;
+                    default:
+                        break;
+                }
+
+                SpeechModels = new ObservableCollection<string>(speechModels);
+                OnPropertyChanged(nameof(SelectedSpeechModel));
+            }
+            catch (Exception ex)
+            {
+                _loggerService.Error(ex, "Error loading speech models, starting with empty collection...");
+                SpeechModels = new ObservableCollection<string>();
+            }
         }
 
         public void NavigateBack()

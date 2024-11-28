@@ -1,8 +1,5 @@
 ﻿using ChatTailorAI.Shared.Dto.Conversations;
 using ChatTailorAI.Shared.Models.Conversations;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Mappers.Interfaces
 {

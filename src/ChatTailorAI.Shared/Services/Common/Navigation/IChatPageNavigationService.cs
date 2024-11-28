@@ -1,9 +1,7 @@
-﻿using ChatTailorAI.Shared.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
+using ChatTailorAI.Shared.Enums;
 
-namespace ChatTailorAI.Shared.Services.Common
+namespace ChatTailorAI.Shared.Services.Common.Navigation
 {
     /// <summary>
     /// Provides navigation capabilities when selecting a chat within the application.

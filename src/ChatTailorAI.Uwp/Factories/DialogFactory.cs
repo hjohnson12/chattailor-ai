@@ -1,17 +1,13 @@
-﻿using ChatTailorAI.Shared.Dto;
-using ChatTailorAI.Shared.ViewModels;
-using ChatTailorAI.Uwp.Views.Dialogs;
-using ChatTailorAI.Uwp.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using ChatTailorAI.Shared.Dto.Conversations;
 using ChatTailorAI.Shared.Factories.ViewModels;
 using ChatTailorAI.Shared.Factories.Interfaces;
 using ChatTailorAI.Shared.ViewModels.Dialogs;
+using ChatTailorAI.Shared.Dto;
+using ChatTailorAI.Uwp.Views.Dialogs;
+using ChatTailorAI.Uwp.Views;
 
 namespace ChatTailorAI.Uwp.Factories
 {

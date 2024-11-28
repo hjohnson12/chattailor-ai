@@ -1,18 +1,13 @@
 ﻿using ChatTailorAI.Shared.Dto.Chat;
-using ChatTailorAI.Shared.Dto.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Assistants.OpenAI;
 using ChatTailorAI.Shared.Services.Files;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ChatTailorAI.Shared.ViewModels
 {
+    /// <summary>
+    /// A view model for a chat image message.
+    /// </summary>
     public class ChatImageMessageViewModel : ChatMessageViewModel
     {
         private readonly IImageFileService _imageFileService;

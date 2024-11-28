@@ -1,15 +1,10 @@
-﻿using ChatTailorAI.Shared.Dto;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using ChatTailorAI.Shared.Dto.Conversations;
 using ChatTailorAI.Shared.Mappers.Interfaces;
-using ChatTailorAI.Shared.Models.Assistants;
-using ChatTailorAI.Shared.Models.Conversations;
 using ChatTailorAI.Shared.Services.Database.Repositories;
 using ChatTailorAI.Shared.Services.DataServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Services.DataService
 {

@@ -1,7 +1,15 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Anthropic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
+using ChatTailorAI.Shared.Dto.Chat.Anthropic;
 using ChatTailorAI.Shared.Dto.Chat.Google;
 using ChatTailorAI.Shared.Events;
-using ChatTailorAI.Shared.Models.Chat.Anthropic.Requests;
 using ChatTailorAI.Shared.Models.Chat.Google;
 using ChatTailorAI.Shared.Models.Chat.Google.Content;
 using ChatTailorAI.Shared.Models.Chat.Google.Requests;
@@ -10,15 +18,6 @@ using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Chat.Google;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Services.Chat.Google
 {
@@ -45,11 +44,11 @@ namespace ChatTailorAI.Services.Chat.Google
         public double Temperature { get; set; }
     }
 
-    public class GoogleGeminiChatService : IGoogleChatService
+    public class GoogleChatService : IGoogleChatService
     {
         private readonly IUserSettingsService _userSettingsService;
         private readonly IAppSettingsService _appSettingsService;
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
         private readonly HttpClient _httpClient;
         private CancellationTokenSource _cancellationTokenSource;
@@ -74,7 +73,7 @@ namespace ChatTailorAI.Services.Chat.Google
 
         private Dictionary<string, ModelSetting> modelSettings;
 
-        public GoogleGeminiChatService(
+        public GoogleChatService(
             IUserSettingsService userSettingsService,
             IAppSettingsService appSettingsService,
             IEventAggregator eventAggregator,
@@ -251,10 +250,8 @@ namespace ChatTailorAI.Services.Chat.Google
             {
                 return modelSettings[key];
             }
-            else
-            {
-                return null;
-            }
+
+            return null;
         }
 
         public bool ValidateApiKey()

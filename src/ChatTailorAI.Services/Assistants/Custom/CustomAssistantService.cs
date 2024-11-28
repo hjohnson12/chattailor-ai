@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Services.Assistants.Custom
+﻿namespace ChatTailorAI.Services.Assistants.Custom
 {
     public class CustomAssistantService
     {

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ChatTailorAI.Shared.Services.Tools
 {
+    /// <summary>
+    /// Represents a service that can execute tools.
+    /// </summary>
     public interface IToolExecutorService
     {
         /// <summary>

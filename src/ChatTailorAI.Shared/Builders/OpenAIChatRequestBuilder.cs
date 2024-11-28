@@ -1,11 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Services.Common;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using ChatTailorAI.Shared.Dto.Chat.OpenAI;
+using ChatTailorAI.Shared.Models.Chat.OpenAI;
 
 namespace ChatTailorAI.Shared.Builders
 {
@@ -27,37 +23,4 @@ namespace ChatTailorAI.Shared.Builders
             return openAIChatRequest;
         }
     }
-
-    //public class OpenAIChatRequestBuilder 
-    //    : IChatRequestBuilder<OpenAIChatRequest, OpenAIBaseChatMessageDto, OpenAIChatSettings>
-    //{
-    //    public OpenAIChatRequest BuildChatRequest(string model, string instructions, IEnumerable<OpenAIBaseChatMessageDto> messages, OpenAIChatSettings settings)
-    //    {
-    //        var openAIChatRequest = new OpenAIChatRequest
-    //        {
-    //            Model = model,
-    //            Instructions = instructions,
-    //            Messages = messages.ToList(),
-    //            Settings = settings
-    //        };
-
-    //        return openAIChatRequest;
-    //    }
-    //}
-
-    //public class OpenAIChatRequestBuilder : IChatRequestBuilder<OpenAIChatRequest, OpenAIBaseChatMessageDto, OpenAIChatSettings>
-    //{
-    //    public OpenAIChatRequest BuildChatRequest(string model, string instructions, IEnumerable<OpenAIBaseChatMessageDto> messages, OpenAIChatSettings settings)
-    //    {
-    //        var openAIChatRequest = new OpenAIChatRequest
-    //        {
-    //            Model = model,
-    //            Instructions = instructions,
-    //            Messages = messages.ToList(),
-    //            Settings = settings
-    //        };
-
-    //        return openAIChatRequest;
-    //    }
-    //}
 }

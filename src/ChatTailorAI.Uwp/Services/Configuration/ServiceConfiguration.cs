@@ -34,7 +34,6 @@ using ChatTailorAI.Services.DataServices;
 using ChatTailorAI.Shared.Services.Chat.OpenAI;
 using ChatTailorAI.Shared.Services.Tools;
 using ChatTailorAI.Shared.Services.Authentication;
-using ChatTailorAI.Shared.Models.Speech;
 using ChatTailorAI.Shared.Services.Files;
 using ChatTailorAI.Shared.Factories.ViewModels;
 using ChatTailorAI.Shared.Builders;
@@ -44,8 +43,6 @@ using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Services.Chat.OpenAI;
 using ChatTailorAI.Shared.ViewModels.Dialogs;
 using ChatTailorAI.Shared.ViewModels.Pages;
-using ChatTailorAI.Shared.Services.Prompts;
-using ChatTailorAI.Services.Prompts;
 using ChatTailorAI.DataAccess.Database.Providers.SQLite;
 using ChatTailorAI.Shared.Transformers.Anthropic;
 using ChatTailorAI.Shared.Services.Chat.Anthropic;
@@ -65,6 +62,10 @@ using ChatTailorAI.Uwp.Services.UI.Navigation;
 using ChatTailorAI.Services.Uwp.UI.Navigation;
 using ChatTailorAI.Uwp.Services.UI.Dialogs;
 using ChatTailorAI.Services.Uwp.UI.Views;
+using ChatTailorAI.Services.Image.OpenAI;
+using ChatTailorAI.Shared.Services.Audio;
+using ChatTailorAI.Shared.Services.Common.Navigation;
+using Windows.Storage;
 
 namespace ChatTailorAI.Uwp.Services.Configuration
 {
@@ -150,15 +151,16 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddSingleton<IFileDownloadService, FileDownloadService>();
             services.AddSingleton<IImageFileService, ImageFileService>();
             services.AddSingleton<IFileService, FileService>();
-            services.AddSingleton<IFolderService, FolderService>();
+            services.AddSingleton<IFolderService<StorageFolder>, FolderService>();
             services.AddSingleton<IDialogService, DialogService>();
             services.AddHttpClient<IFileDownloadService, FileDownloadService>();
             services.AddSingleton<IChatFileService, ChatFileService>();
             services.AddHttpClient<IOpenAIChatService, OpenAIChatService>();
-            services.AddHttpClient<IAnthropicChatService, AnthropicClaudeChatService>();
-            services.AddHttpClient<IGoogleChatService, GoogleGeminiChatService>();
+            services.AddHttpClient<IAnthropicChatService, AnthropicChatService>();
+            services.AddHttpClient<IGoogleChatService, GoogleChatService>();
             services.AddHttpClient<ILMStudioChatService, LMStudioChatService>();
-            services.AddHttpClient<IDalleImageService, DalleImageService>();
+            services.AddHttpClient<IImageGenerationService, OpenAIDalleImageService>();
+            services.AddSingleton<IImageService, ImageService>();
             services.AddSingleton<IAzureSpeechService, AzureSpeechService>();
             services.AddHttpClient<IOpenAISpeechService, OpenAISpeechService>();
             services.AddHttpClient<IElevenLabsSpeechService, ElevenLabsSpeechService>();
@@ -176,9 +178,7 @@ namespace ChatTailorAI.Uwp.Services.Configuration
             services.AddSingleton<IToolExecutorService, FunctionToolExecutorService>();
             services.AddSingleton<IAuthenticationService, AuthenticationService>();
             services.AddSingleton<ISpeechService, SpeechService>();
-            services.AddSingleton<IImageGenerationService, ImageGenerationService>();
             services.AddSingleton<IApplicationViewService, ApplicationViewService>();
-            services.AddSingleton<IPromptService, PromptService>();
             services.AddSingleton<IModelManagerService, ModelManagerService>();
 
             // Transformers

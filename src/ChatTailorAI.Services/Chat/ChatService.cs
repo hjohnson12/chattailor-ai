@@ -1,10 +1,4 @@
-﻿using ChatTailorAI.Shared.Dto.Chat;
-using ChatTailorAI.Shared.Models.Chat;
-using ChatTailorAI.Shared.Services.Chat.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ChatTailorAI.Shared.Services.Chat.OpenAI;
 
 namespace ChatTailorAI.Services.Chat
 {

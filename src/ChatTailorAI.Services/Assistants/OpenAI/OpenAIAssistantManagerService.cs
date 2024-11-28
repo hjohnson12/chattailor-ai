@@ -1,16 +1,11 @@
-﻿using ChatTailorAI.Shared.Dto;
-using ChatTailorAI.Shared.Models.Assistants.OpenAI;
-using ChatTailorAI.Shared.Models.Chat;
-using ChatTailorAI.Shared.Models.Tools;
-using ChatTailorAI.Shared.Services.Assistants.OpenAI;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
+using ChatTailorAI.Shared.Models.Assistants.OpenAI;
+using ChatTailorAI.Shared.Services.Assistants.OpenAI;
 
 namespace ChatTailorAI.Services.Assistants.OpenAI
 {

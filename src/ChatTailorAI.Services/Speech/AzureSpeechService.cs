@@ -1,24 +1,23 @@
-﻿using ChatTailorAI.Shared.Models.Settings;
-using ChatTailorAI.Shared.Models.Speech;
-using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Speech;
-using Microsoft.CognitiveServices.Speech;
-using Microsoft.CognitiveServices.Speech.Audio;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
+using Newtonsoft.Json;
+using ChatTailorAI.Shared.Models.Settings;
+using ChatTailorAI.Shared.Models.Speech;
+using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Speech;
 
 namespace ChatTailorAI.Services.Speech
 {
     public class AzureSpeechService : IAzureSpeechService
     {
-        private IUserSettingsService _userSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
+        private readonly string[] models;
         private string _voiceName;
-        private string[] models;
 
         public AzureSpeechService(
             IUserSettingsService userSettingsService)
@@ -27,7 +26,6 @@ namespace ChatTailorAI.Services.Speech
 
             _voiceName = _userSettingsService.Get<string>(UserSettings.VoiceName);
             models = new string[] { "default" };
-
         }
 
         public string ServiceRegion
@@ -73,6 +71,7 @@ namespace ChatTailorAI.Services.Speech
                     { "Ocp-Apim-Subscription-Key", azureSpeechApiKey },
                 },
             };
+
             using (var response = await client.SendAsync(request))
             {
                 response.EnsureSuccessStatusCode();

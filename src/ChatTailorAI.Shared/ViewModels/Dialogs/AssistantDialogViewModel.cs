@@ -1,19 +1,17 @@
-﻿using ChatTailorAI.Shared.Base;
-using ChatTailorAI.Shared.Dto;
-using ChatTailorAI.Shared.Events;
-using ChatTailorAI.Shared.Models.Assistants;
-using ChatTailorAI.Shared.Models.Shared;
-using ChatTailorAI.Shared.Models.Tools;
-using ChatTailorAI.Shared.Resources;
-using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
 using System.Windows.Input;
+using ChatTailorAI.Shared.Base;
+using ChatTailorAI.Shared.Dto;
+using ChatTailorAI.Shared.Events;
+using ChatTailorAI.Shared.Models.Assistants;
+using ChatTailorAI.Shared.Models.Tools;
+using ChatTailorAI.Shared.Resources;
+using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Events;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs
 {

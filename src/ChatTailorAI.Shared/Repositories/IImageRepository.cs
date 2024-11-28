@@ -1,8 +1,6 @@
-﻿using ChatTailorAI.Shared.Models.Chat;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Models.Chat;
 
 namespace ChatTailorAI.Shared.Repositories
 {

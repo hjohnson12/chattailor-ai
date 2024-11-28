@@ -1,10 +1,8 @@
-﻿using ChatTailorAI.Shared.Dto.Chat;
+﻿using System.Collections.Generic;
+using System.Linq;
+using ChatTailorAI.Shared.Dto.Chat;
 using ChatTailorAI.Shared.Mappers.Interfaces;
 using ChatTailorAI.Shared.Models.Chat;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Mappers
 {

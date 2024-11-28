@@ -1,21 +1,19 @@
-﻿using ChatTailorAI.Shared.Base;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Enums;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Assistants;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
 using ChatTailorAI.Shared.Services.Assistants.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.DataServices;
 using ChatTailorAI.Shared.Services.Events;
-using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Shared.ViewModels.Pages
 {

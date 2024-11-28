@@ -1,5 +1,5 @@
 ﻿using ChatTailorAI.Shared.Enums;
-using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 using ChatTailorAI.Uwp.Views;
 using System;
 using System.Collections.Generic;

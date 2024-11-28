@@ -1,14 +1,12 @@
 ﻿using System;
-using ChatTailorAI;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Storage;
 using ChatTailorAI.Shared.Services.Files;
-using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace ChatTailorAI.Services.Uwp.FileManagement
 {
@@ -17,10 +15,10 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
     /// </summary>
     public class FileDownloadService : IFileDownloadService
     {
-        private HttpClient _httpClient;
-        private IFolderService _folderService;
+        private readonly HttpClient _httpClient;
+        private readonly IFolderService<StorageFolder> _folderService;
 
-        public FileDownloadService(HttpClient client, IFolderService folderService)
+        public FileDownloadService(HttpClient client, IFolderService<StorageFolder> folderService)
         {
             _folderService = folderService;
             _httpClient = client;
@@ -99,12 +97,21 @@ namespace ChatTailorAI.Services.Uwp.FileManagement
             }
         }
 
-
+        /// <summary>
+        /// Downloads a file asynchronously from a given url
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<byte[]> DownloadFileAsync(string url)
         {
             return await _httpClient.GetByteArrayAsync(url);
         }
 
+        /// <summary>
+        /// Downloads multiple files asynchronously from given urls
+        /// </summary>
+        /// <param name="urls"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<byte[]>> DownloadFilesAsync(string[] urls)
         {
             return await Task.WhenAll(urls.Select(DownloadFileAsync));

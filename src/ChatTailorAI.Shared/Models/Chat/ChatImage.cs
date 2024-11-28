@@ -1,8 +1,5 @@
-﻿using ChatTailorAI.Shared.Models.Prompts;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System;
+using ChatTailorAI.Shared.Models.Prompts;
 
 namespace ChatTailorAI.Shared.Models.Chat
 {

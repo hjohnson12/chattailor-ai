@@ -1,9 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto.Chat.Anthropic;
-using ChatTailorAI.Shared.Models.Chat.Anthropic;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using ChatTailorAI.Shared.Dto.Chat.Anthropic;
+using ChatTailorAI.Shared.Models.Chat.Anthropic;
 
 namespace ChatTailorAI.Shared.Builders
 {

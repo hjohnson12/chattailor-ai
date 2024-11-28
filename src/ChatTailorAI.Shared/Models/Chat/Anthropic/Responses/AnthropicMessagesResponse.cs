@@ -1,9 +1,7 @@
-﻿using ChatTailorAI.Shared.Models.Chat.Anthropic.Content;
-using ChatTailorAI.Shared.Models.Chat.Anthropic.Converters;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using ChatTailorAI.Shared.Models.Chat.Anthropic.Content;
+using ChatTailorAI.Shared.Models.Chat.Anthropic.Converters;
 
 namespace ChatTailorAI.Shared.Models.Chat.Anthropic.Responses
 {

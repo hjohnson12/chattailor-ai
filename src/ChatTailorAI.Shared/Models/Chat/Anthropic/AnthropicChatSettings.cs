@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Models.Chat.Anthropic
+﻿namespace ChatTailorAI.Shared.Models.Chat.Anthropic
 {
     public class AnthropicChatSettings : ChatSettings
     {

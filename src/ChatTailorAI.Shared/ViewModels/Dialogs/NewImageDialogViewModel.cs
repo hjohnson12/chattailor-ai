@@ -1,21 +1,17 @@
-﻿using ChatTailorAI.Shared.Base;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using ChatTailorAI.Shared.Base;
 using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Events;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
 using ChatTailorAI.Shared.Models.Prompts;
 using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Image;
-using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace ChatTailorAI.Shared.ViewModels.Dialogs
 {
@@ -23,8 +19,7 @@ namespace ChatTailorAI.Shared.ViewModels.Dialogs
     {
         private readonly IAppNotificationService _appNotificationService;
         private readonly IUserSettingsService _userSettingsService;
-        private readonly IDalleImageService _dalleImageService;
-        private readonly IImageGenerationService _imageGenerationService;
+        private readonly IImageService _imageService;
         private readonly IEventAggregator _eventAggregator;
 
         private bool _isGenerating;
@@ -37,15 +32,13 @@ namespace ChatTailorAI.Shared.ViewModels.Dialogs
 
         public NewImageDialogViewModel(
             IAppNotificationService appNotificationService,
-            IDalleImageService dalleImageService,
             IUserSettingsService userSettingsService,
-            IImageGenerationService imageGenerationService,
+            IImageService imageService,
             IEventAggregator eventAggregator)
         {
             _appNotificationService = appNotificationService;
-            _dalleImageService = dalleImageService;
             _userSettingsService = userSettingsService;
-            _imageGenerationService = imageGenerationService;
+            _imageService = imageService;
             _eventAggregator = eventAggregator;
 
             IsGenerating = false;
@@ -140,7 +133,7 @@ namespace ChatTailorAI.Shared.ViewModels.Dialogs
 
             try
             {
-                var imageGenerationResponse = await _imageGenerationService.GenerateImagesAsync(imagePromptDto);
+                var imageGenerationResponse = await _imageService.GenerateImagesAsync(imagePromptDto);
 
                 // TODO: Publish here or save to dob here? 
                 _eventAggregator.PublishImageGenerated(new ImageGeneratedEvent { 

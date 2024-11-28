@@ -1,5 +1,5 @@
 ﻿using ChatTailorAI.Shared.Models.Conversations;
-using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 using ChatTailorAI.Shared.ViewModels;
 using ChatTailorAI.Shared.ViewModels.Pages;
 using Microsoft.Extensions.DependencyInjection;

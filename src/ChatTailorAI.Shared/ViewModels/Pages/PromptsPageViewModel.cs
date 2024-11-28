@@ -3,16 +3,14 @@ using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Enums;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Models.Prompts;
-using ChatTailorAI.Shared.Services.Assistants.OpenAI;
 using ChatTailorAI.Shared.Services.Common;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 using ChatTailorAI.Shared.Services.DataServices;
 using ChatTailorAI.Shared.Services.Events;
 using CommunityToolkit.Mvvm.Input;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -56,7 +54,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             LoadedCommand = new AsyncRelayCommand(LoadPrompts);
             StartChatCommand = new AsyncRelayCommand<PromptDto>(StartChat);
         }
-
 
         public ICommand EditPromptCommand { get; private set; }
         public ICommand SelectPromptCommand { get; private set; }
@@ -147,7 +144,6 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
 
         private async Task SelectPrompt(PromptDto prompt)
         {
-            //_appNotificationService.Display("Selected prompt: " + prompt.Title);
             SelectedPrompt = prompt;
         }
 
@@ -177,18 +173,16 @@ namespace ChatTailorAI.Shared.ViewModels.Pages
             catch (Exception ex)
             {
                 _loggerService.Error(ex, "Failed to create prompt");
-
-                // TODO: Handle rollback
                 _appNotificationService.Display(ex.Message);
             }
         }
 
         private async Task DeletePrompt()
         {
-            // Delete multiple selected at one point, currently
-            // just delete the selected one if any
             try
             {
+                // Currently just delete the selected one if any
+                // TODO: Delete multiple selected at some point
                 if (SelectedPrompt == null)
                 {
                     _appNotificationService.Display("Please select a prompt to delete");

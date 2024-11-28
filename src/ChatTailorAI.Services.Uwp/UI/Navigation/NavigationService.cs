@@ -1,11 +1,7 @@
-﻿using ChatTailorAI.Shared.Enums;
-using ChatTailorAI.Shared.Services.Common;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 using Windows.UI.Xaml.Controls;
+using ChatTailorAI.Shared.Enums;
+using ChatTailorAI.Shared.Services.Common.Navigation;
 
 namespace ChatTailorAI.Uwp.Services.UI.Navigation
 {

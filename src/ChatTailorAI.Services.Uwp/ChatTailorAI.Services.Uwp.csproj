@@ -126,9 +126,8 @@
     <Compile Include="Files\FileDownloadService.cs" />
     <Compile Include="Files\FileService.cs" />
     <Compile Include="Files\FolderService.cs" />
-    <Compile Include="Files\IFolderService.cs" />
     <Compile Include="Files\ImageFileService.cs" />
-    <Compile Include="Logger\NLogService.cs" />
+    <Compile Include="Logging\NLogService.cs" />
     <Compile Include="Notification\AppNotificationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\AppSettingsService.cs" />

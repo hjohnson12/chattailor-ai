@@ -1,4 +1,10 @@
-﻿using ChatTailorAI.Services.Events;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ChatTailorAI.Shared.Events;
 using ChatTailorAI.Shared.Events.EventArgs;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
@@ -6,29 +12,21 @@ using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Image;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.WebRequestMethods;
 
-namespace ChatTailorAI.Services.Image
+namespace ChatTailorAI.Services.Image.OpenAI
 {
-    public class DalleImageService : IDalleImageService
+    public class OpenAIDalleImageService : IImageGenerationService
     {
         private static HttpClient _httpClient;
         private readonly IAppSettingsService _appSettingsService;
-        private IUserSettingsService _userSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private readonly IEventAggregator _eventAggregator;
-        private string[] models;
-        private Dictionary<string, List<string>> modelImageSizes;
+        private readonly string[] models;
+        private readonly Dictionary<string, List<string>> modelImageSizes;
 
         private readonly string dalleBaseUrl = "https://api.openai.com/";
 
-        public DalleImageService(
+        public OpenAIDalleImageService(
             IAppSettingsService appSettingsService,
             IUserSettingsService userSettingsService,
             IEventAggregator eventAggregator,

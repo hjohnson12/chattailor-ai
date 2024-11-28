@@ -1,9 +1,7 @@
-﻿using ChatTailorAI.Shared.Models.Chat.Anthropic.Content;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using ChatTailorAI.Shared.Models.Chat.Google.Content;
 
 namespace ChatTailorAI.Shared.Models.Chat.Google.Converters

@@ -16,7 +16,6 @@ using ChatTailorAI.DataAccess.Database;
 using ChatTailorAI.Uwp.Services.Configuration;
 using ChatTailorAI.Uwp.Helpers;
 using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Prompts;
 using ChatTailorAI.Uwp.Views;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -118,7 +117,6 @@ namespace ChatTailorAI.Uwp
 
             ConfigureLogger();
             await InitializeDatabaseAsync();
-            await MigratePromptsFileToDatabase();
             await InitializeStoreEngagement();
             await CheckForUpdateOrFirstRun();
         }
@@ -133,15 +131,6 @@ namespace ChatTailorAI.Uwp
         {
             var dbInitializer = ServiceHost.Services.GetService<DbInitializer>();
             await dbInitializer.InitializeAsync();
-        }
-
-        private async Task MigratePromptsFileToDatabase()
-        {
-            // Remove this in the future after all users have migrated off of the file
-            // This will be when the app has been updated a few times and no users
-            // are left on v1.3.1 or lower
-            IPromptService promptService = ServiceHost.Services.GetService<IPromptService>();
-            await promptService.MigratePromptsAsync();
         }
 
         private async Task InitializeStoreEngagement()

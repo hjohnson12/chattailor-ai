@@ -1,7 +1,6 @@
-﻿using ChatTailorAI.Shared.Services.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using ChatTailorAI.Shared.Services.Events;
 
 namespace ChatTailorAI.Services.Events
 {

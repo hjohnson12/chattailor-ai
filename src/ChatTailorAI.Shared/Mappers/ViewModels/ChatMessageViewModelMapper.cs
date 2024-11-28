@@ -1,12 +1,8 @@
-﻿using ChatTailorAI.Shared.Dto.Chat;
+﻿using System;
+using ChatTailorAI.Shared.Dto.Chat;
 using ChatTailorAI.Shared.Dto.Chat.OpenAI;
 using ChatTailorAI.Shared.Mappers.Interfaces;
-using ChatTailorAI.Shared.Models.Assistants.OpenAI;
 using ChatTailorAI.Shared.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Mappers.ViewModels
 {

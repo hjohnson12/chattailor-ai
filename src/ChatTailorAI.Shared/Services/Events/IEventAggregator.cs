@@ -1,10 +1,6 @@
-﻿using ChatTailorAI.Shared.Events.EventArgs;
+﻿using System;
+using ChatTailorAI.Shared.Events.EventArgs;
 using ChatTailorAI.Shared.Events;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using ChatTailorAI.Shared.Models.Chat.OpenAI;
-using ChatTailorAI.Shared.Dto.Chat.OpenAI;
 
 namespace ChatTailorAI.Shared.Services.Events
 {

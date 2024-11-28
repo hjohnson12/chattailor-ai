@@ -1,7 +1,5 @@
 ﻿using ChatTailorAI.Shared.Dto.Chat.LMStudio;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ChatTailorAI.Shared.Models.Chat.LMStudio
 {

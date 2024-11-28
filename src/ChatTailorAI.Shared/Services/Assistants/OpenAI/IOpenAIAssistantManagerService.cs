@@ -1,9 +1,7 @@
-﻿using ChatTailorAI.Shared.Dto;
-using ChatTailorAI.Shared.Models.Assistants.OpenAI;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
+using ChatTailorAI.Shared.Models.Assistants.OpenAI;
 
 namespace ChatTailorAI.Shared.Services.Assistants.OpenAI
 {

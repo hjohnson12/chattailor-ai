@@ -1,13 +1,8 @@
 ﻿using ChatTailorAI.Shared.Base;
-using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Dto.Conversations;
 using ChatTailorAI.Shared.Dto.Conversations.OpenAI;
 using ChatTailorAI.Shared.Models.Assistants;
 using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Xml.Linq;
 
 namespace ChatTailorAI.Shared.ViewModels
 {
@@ -20,6 +15,9 @@ namespace ChatTailorAI.Shared.ViewModels
         private DateTime _createdAt;
         private string _id;
 
+        // Workaround since assistant name isnt stored in conversation
+        private string _assistantName;
+
         // Properties specific to certain conversation types
         private string _assistantId;
         private AssistantType _assistantType;
@@ -27,7 +25,6 @@ namespace ChatTailorAI.Shared.ViewModels
 
         public ConversationViewModel()
         {
-            
         }
 
         public string Id
@@ -87,8 +84,6 @@ namespace ChatTailorAI.Shared.ViewModels
             set => SetProperty(ref _threadId, value); 
         }
 
-        // Workaround since assistant name isnt stored in conversation
-        private string _assistantName;
         public string AssistantName
         {
             get => _assistantName;

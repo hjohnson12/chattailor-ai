@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Models.Chat.Google
+﻿namespace ChatTailorAI.Shared.Models.Chat.Google
 {
     public class GoogleChatSettings : ChatSettings
     {

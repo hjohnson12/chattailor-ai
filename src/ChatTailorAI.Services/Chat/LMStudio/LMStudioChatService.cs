@@ -1,7 +1,16 @@
-﻿using ChatTailorAI.Services.Events;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 using ChatTailorAI.Shared.Dto.Chat.LMStudio;
 using ChatTailorAI.Shared.Events;
-using ChatTailorAI.Shared.Events.EventArgs;
 using ChatTailorAI.Shared.Models.Chat.LMStudio;
 using ChatTailorAI.Shared.Models.Chat.LMStudio.Requests;
 using ChatTailorAI.Shared.Models.Chat.LMStudio.Responses;
@@ -11,20 +20,6 @@ using ChatTailorAI.Shared.Services.Chat.LMStudio;
 using ChatTailorAI.Shared.Services.Common;
 using ChatTailorAI.Shared.Services.Events;
 using ChatTailorAI.Shared.Services.Tools;
-using ChatTailorAI.Shared.ViewModels;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Services.Chat.LMStudio
 {
@@ -82,7 +77,6 @@ namespace ChatTailorAI.Services.Chat.LMStudio
                 });
             }
 
-            // Split @lmstudio/ off the front of model name
             chatRequest.Model = chatRequest.Model.Replace("@lmstudio/", "");
 
             var body = new LMStudioChatCompletionRequest
@@ -124,7 +118,7 @@ namespace ChatTailorAI.Services.Chat.LMStudio
                         if (chatCompletion == null || chatCompletion.Choices == null)
                         {
                             var parsedJson = JsonConvert.DeserializeObject<Root>(data);
-                            throw new Exception($"{parsedJson.error.message}");
+                            throw new Exception($"{parsedJson.Error.Message}");
                         }
 
                         // Process delta based on the type
@@ -221,13 +215,11 @@ namespace ChatTailorAI.Services.Chat.LMStudio
         {
             return modelNames.Select(modelName =>
             {
-                // Split the model name by '/'
                 var parts = modelName.Split('/');
 
                 // Remove the last part (which contains the .gguf extension) and join the rest
                 var processedName = string.Join("/", parts.Take(parts.Length - 1));
 
-                // Prepend @lmstudio/ to the processed name
                 return $"@lmstudio/{processedName}";
             }).ToList();
         }
@@ -240,14 +232,14 @@ namespace ChatTailorAI.Services.Chat.LMStudio
 
     public class ErrorModel
     {
-        public string message { get; set; }
-        public string type { get; set; }
-        public object param { get; set; }
-        public object code { get; set; }
+        public string Message { get; set; }
+        public string Type { get; set; }
+        public object Param { get; set; }
+        public object Code { get; set; }
     }
 
     public class Root
     {
-        public ErrorModel error { get; set; }
+        public ErrorModel Error { get; set; }
     }
 }

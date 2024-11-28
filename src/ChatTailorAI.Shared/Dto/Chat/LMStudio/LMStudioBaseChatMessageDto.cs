@@ -1,8 +1,5 @@
-﻿using ChatTailorAI.Shared.Models.Chat;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json;
+using ChatTailorAI.Shared.Models.Chat;
 
 namespace ChatTailorAI.Shared.Dto.Chat.LMStudio
 {

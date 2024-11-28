@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Net.Http.Headers;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json.Serialization;
 using Newtonsoft.Json;
 using ChatTailorAI.Shared.Models.Speech;
 using ChatTailorAI.Shared.Services.Common;
@@ -17,11 +12,11 @@ namespace ChatTailorAI.Services.Speech
 {
     public class WhisperService : IWhisperService
     {
-        private string whisperApiUrl = "https://api.openai.com/";
-        private string TRANSCRIPTION_API_ENDPOINT = "v1/audio/transcriptions";
-        private string TRANSLATION_API_ENDPOINT = "v1/audio/translations";
-        private IAppSettingsService _appSettingsService;
-        private IUserSettingsService _userSettingsService;
+        private readonly string whisperApiUrl = "https://api.openai.com/";
+        private readonly string TRANSCRIPTION_API_ENDPOINT = "v1/audio/transcriptions";
+        private readonly string TRANSLATION_API_ENDPOINT = "v1/audio/translations";
+        private readonly IAppSettingsService _appSettingsService;
+        private readonly IUserSettingsService _userSettingsService;
         private static HttpClient _httpClient;
 
         public WhisperService(

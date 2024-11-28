@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Windows.ApplicationModel.Resources;
 using ChatTailorAI.Shared.Services.Common;
-using Windows.ApplicationModel.Resources;
 
 namespace ChatTailorAI.Services.Uwp.Settings
 {

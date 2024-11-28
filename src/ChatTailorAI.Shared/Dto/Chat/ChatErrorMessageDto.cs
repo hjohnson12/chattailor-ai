@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Dto.Chat
+﻿namespace ChatTailorAI.Shared.Dto.Chat
 {
     public class ChatErrorMessageDto : ChatMessageDto
     {

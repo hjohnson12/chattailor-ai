@@ -1,34 +1,31 @@
-﻿using ChatTailorAI.Shared.Dto;
-using ChatTailorAI.Shared.Models.Image;
+﻿using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto;
 using ChatTailorAI.Shared.Models.Image.OpenAI;
+using ChatTailorAI.Shared.Models.Image;
+using ChatTailorAI.Shared.Services.Image;
 using ChatTailorAI.Shared.Models.Settings;
 using ChatTailorAI.Shared.Services.Common;
-using ChatTailorAI.Shared.Services.Image;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ChatTailorAI.Services.Image
 {
-    public class ImageGenerationService : IImageGenerationService
+    public class ImageService : IImageService
     {
+        private readonly IImageGenerationService _generationService;
         private readonly IUserSettingsService _userSettingsService;
-        private readonly IDalleImageService _dalleImageService;
 
-        public ImageGenerationService(
-            IUserSettingsService userSettingsService,
-            IDalleImageService dalleImageService)
+        public ImageService(
+            IImageGenerationService generationService,
+            IUserSettingsService userSettingsService)
         {
+            _generationService = generationService;
             _userSettingsService = userSettingsService;
-            _dalleImageService = dalleImageService;
         }
 
         public async Task<ImageGenerationResponse<OpenAIImageGenerationSettings>> GenerateImagesAsync(PromptDto imagePrompt)
         {
             // TODO: Update method to work with multiple image generation services (Dalle, StabilityAI, etc.)
             var openAIImageRequest = CreateImageRequest(imagePrompt);
-            var imageUrls = await _dalleImageService.GenerateImagesAsync(openAIImageRequest);
+            var imageUrls = await _generationService.GenerateImagesAsync(openAIImageRequest);
 
             return new ImageGenerationResponse<OpenAIImageGenerationSettings>
             {
@@ -41,7 +38,7 @@ namespace ChatTailorAI.Services.Image
         {
             var imageModel = _userSettingsService.Get<string>(UserSettings.ImageModel);
             var numberOfImages = imageModel.Equals("dall-e-3")
-                ? 1 // Only 1 supported at a time with Dalle3
+            ? 1 // Only 1 supported at a time with Dalle3
                 : int.Parse(_userSettingsService.Get<string>(UserSettings.ImageCount));
             var imageQuality = imageModel.Equals("dall-e-3")
                 ? _userSettingsService.Get<string>(UserSettings.ImageQuality)

@@ -1,14 +1,10 @@
-﻿using ChatTailorAI.Shared.Dto.Chat;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using ChatTailorAI.Shared.Dto.Chat;
 using ChatTailorAI.Shared.Dto.Chat.OpenAI;
-using ChatTailorAI.Shared.Models.Assistants.OpenAI;
 using ChatTailorAI.Shared.Models.Chat;
 using ChatTailorAI.Shared.Services.Files;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ChatTailorAI.Shared.Transformers.OpenAI
 {

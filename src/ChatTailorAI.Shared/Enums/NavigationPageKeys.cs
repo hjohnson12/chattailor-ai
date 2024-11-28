@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ChatTailorAI.Shared.Enums
+﻿namespace ChatTailorAI.Shared.Enums
 {
+    /// <summary>
+    /// An enum for navigation page keys.
+    /// </summary>
     public enum NavigationPageKeys
     {
         ChatPage,
