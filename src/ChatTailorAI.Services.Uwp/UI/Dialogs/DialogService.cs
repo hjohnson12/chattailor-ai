@@ -12,16 +12,10 @@ namespace ChatTailorAI.Uwp.Services.UI.Dialogs
     public class DialogService : IDialogService
     {
         private readonly IDialogFactory _dialogFactory;
-        private bool _isDialogOpen;
 
         public DialogService(IDialogFactory dialogFactory)
         {
             _dialogFactory = dialogFactory;
-        }
-
-        public bool CheckForOpenDialog()
-        {
-            return _isDialogOpen;
         }
 
         public async Task<bool> ShowDeleteDialogAsync()

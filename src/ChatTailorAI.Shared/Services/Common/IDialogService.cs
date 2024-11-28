@@ -9,7 +9,6 @@ namespace ChatTailorAI.Shared.Services.Common
     /// </summary>
     public interface IDialogService
     {
-        bool CheckForOpenDialog();
         Task<bool> ShowDeleteDialogAsync();
         Task ShowFirstRunDialogAsync();
         Task ShowAppUpdatedDialogAsync();
